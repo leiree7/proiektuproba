@@ -14,17 +14,18 @@ import domain.Bezeroa;
 import domain.Event;
 import domain.Pronostikoa;
 
-import org.junit.Before;
+
+import org.junit.BeforeClass;
 
 public class ApustuaEginDABTest {
-	private DataAccess da;
-	Bezeroa bezero1;
-	Bezeroa bezero2;
-	Bezeroa bezero21;
+	private static DataAccess da;
+	static Bezeroa bezero1;
+	static Bezeroa bezero2;
+	static Bezeroa bezero21;
 	
-	Event event1;
+	static Event event1;
 	
-	@Before
+	@BeforeClass
 	public void setDataBase() {
 		da = new DataAccess(true);
 		da.initializeDB();
