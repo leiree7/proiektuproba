@@ -26,7 +26,7 @@ public class ApustuaEginDABTest {
 	static Event event1;
 	
 	@BeforeClass
-	public void setDataBase() {
+	public static void setDataBase() {
 		da = new DataAccess(true);
 		da.initializeDB();
 		da.open(false);
@@ -34,8 +34,8 @@ public class ApustuaEginDABTest {
 		bezero1 = da.getBezeroa("Tarek12301");
 		da.diruaSartu(100, bezero1);
 		
-		bezero2 = da.getBezeroa("Josulo");
-		da.diruaSartu(20, bezero2);
+		bezero2 = da.getBezeroa("PelloJoxepe");
+		da.diruaSartu(100, bezero2);
 		bezero21 = da.getBezeroa("Na1ara");
 		da.diruaSartu(100, bezero21);
 		da.errepikatu(bezero21, bezero2, 1, 40, 0);
@@ -49,9 +49,11 @@ public class ApustuaEginDABTest {
 			year += 1;
 		}
 		event1 = da.getEvents(UtilDate.newDate(year, month, 17)).get(0);
+		event1.getQuestions().get(0).setBetMinimum(5);
 		da.close();
 	}
 	
+	@Test
 	public void test1() {
 		ArrayList<Pronostikoa> pronostikoak = new ArrayList<Pronostikoa>();
 		da.open(false);
@@ -74,10 +76,10 @@ public class ApustuaEginDABTest {
 		bezero2 = da.getBezeroa(bezero2.getErabiltzaileIzena());
 		pronostikoak.add(event1.getQuestions().get(0).getPronostics().get(0));
 		double dirua1 = bezero2.getDirua();
-		double dirua2 = bezero2.getErrepikatzaileak().get(1).getNork().getDirua();
+		double dirua2 = bezero2.getErrepikatzaileak().get(0).getNork().getDirua();
 		assertEquals(da.apustuaEgin(pronostikoak, 10, bezero2), bezero2);
 		assertTrue(bezero2.getDirua() == dirua1 - 10);
-		assertTrue(bezero2.getErrepikatzaileak().get(1).getNork().getDirua() == dirua2-10);
+		assertTrue(bezero2.getErrepikatzaileak().get(0).getNork().getDirua() == dirua2-10);
 		da.close();
 		
 		//Dirua kentzen du apustua egiten duelako, eta errepikatzaileari ere

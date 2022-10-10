@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import static org.junit.Assert.*;
 import org.junit.Test;
 import org.junit.Before;
+import org.junit.BeforeClass;
 
 import configuration.UtilDate;
 import dataAccess.DataAccess;
@@ -20,18 +21,18 @@ import domain.Question;
 
 public class ApustuaEginDAWTest {
 	
-	private DataAccess da;
-	Bezeroa bezero1;
-	Bezeroa bezero2;
-	Bezeroa bezero21;
-	Bezeroa bezero3;
-	Bezeroa bezero31;
-	Bezeroa bezero4;
-	Bezeroa bezero41;
+	private static DataAccess da;
+	static Bezeroa bezero1;
+	static Bezeroa bezero2;
+	static Bezeroa bezero21;
+	static Bezeroa bezero3;
+	static Bezeroa bezero31;
+	static Bezeroa bezero4;
+	static Bezeroa bezero41;
 	
-	Event event1;
-	@Before
-	public void setDataBase() {
+	static Event event1;
+	@BeforeClass
+	public static void setDataBase() {
 		da = new DataAccess(true);
 		da.initializeDB();
 		da.open(false);
@@ -39,8 +40,8 @@ public class ApustuaEginDAWTest {
 		bezero1 = da.getBezeroa("Tarek12301");
 		da.diruaSartu(100, bezero1);
 		
-		bezero2 = da.getBezeroa("Josulo");
-		da.diruaSartu(20, bezero2);
+		bezero2 = da.getBezeroa("Saioo99");
+		da.diruaSartu(104, bezero2);
 		bezero21 = da.getBezeroa("Na1ara");
 		da.diruaSartu(100, bezero21);
 		da.errepikatu(bezero21, bezero2, 1, 40, 0);
@@ -51,7 +52,7 @@ public class ApustuaEginDAWTest {
 		da.errepikatu(bezero31, bezero3, 1, 0, 0);
 		
 		bezero4 = da.getBezeroa("Josueeee");
-		bezero41 = da.getBezeroa("Ontsalo");
+		bezero41 = da.getBezeroa("PelloJoxepe");
 		da.errepikatu(bezero41, bezero4, 1, 3, 0);
 		
 		Calendar today = Calendar.getInstance();
@@ -63,6 +64,7 @@ public class ApustuaEginDAWTest {
 			year += 1;
 		}
 		event1 = da.getEvents(UtilDate.newDate(year, month, 17)).get(0);
+		event1.getQuestions().get(0).setBetMinimum(5);
 		da.close();
 	}
 	
@@ -73,10 +75,10 @@ public class ApustuaEginDAWTest {
 		
 		bezero2 = da.getBezeroa(bezero2.getErabiltzaileIzena());
 		double dirua1 = bezero2.getDirua();
-		double dirua2 = bezero2.getErrepikatzaileak().get(1).getNork().getDirua();
+		double dirua2 = bezero2.getErrepikatzaileak().get(0).getNork().getDirua();
 		assertEquals(da.apustuaEgin(pronostikoak, 10, bezero2), bezero2);
 		assertTrue(bezero2.getDirua() == dirua1 - 10);
-		assertTrue(bezero2.getErrepikatzaileak().get(1).getNork().getDirua() == dirua2-10);
+		assertTrue(bezero2.getErrepikatzaileak().get(0).getNork().getDirua() == dirua2-10);
 		da.close();
 		
 		//Dirua kentzen du apustua egiten duelako, eta errepikatzaileari ere
@@ -89,10 +91,10 @@ public class ApustuaEginDAWTest {
 		bezero2 = da.getBezeroa(bezero2.getErabiltzaileIzena());
 		pronostikoak.add(event1.getQuestions().get(0).getPronostics().get(0));
 		double dirua1 = bezero2.getDirua();
-		double dirua2 = bezero2.getErrepikatzaileak().get(1).getNork().getDirua();
+		double dirua2 = bezero2.getErrepikatzaileak().get(0).getNork().getDirua();
 		assertEquals(da.apustuaEgin(pronostikoak, 10, bezero2), bezero2);
 		assertTrue(bezero2.getDirua() == dirua1 - 10);
-		assertTrue(bezero2.getErrepikatzaileak().get(1).getNork().getDirua() == dirua2 - 10);
+		assertTrue(bezero2.getErrepikatzaileak().get(0).getNork().getDirua() == dirua2 - 10);
 		da.close();
 		
 		//Dirua kentzen du apustua egiten duelako, eta errepikatzaileari ere
@@ -125,7 +127,7 @@ public class ApustuaEginDAWTest {
 		assertTrue(bezero3.getErrepikatzaileak().get(0).getNork().getDirua() == dirua2);
 		da.close();
 		
-		//Errepikatzailearen dirua ez da aldatzen ez daukalako hulabetean diru nahikorik apustua egiteko
+		//Errepikatzailearen dirua ez da aldatzen ez daukalako hilabetean diru nahikorik apustua egiteko
 	}
 	
 	@Test
@@ -133,15 +135,15 @@ public class ApustuaEginDAWTest {
 		ArrayList<Pronostikoa> pronostikoak = new ArrayList<Pronostikoa>();
 		da.open(false);
 		bezero2 = da.getBezeroa(bezero3.getErabiltzaileIzena());
-		pronostikoak.add(event1.getQuestions().get(1).getPronostics().get(0));
+		pronostikoak.add(event1.getQuestions().get(0).getPronostics().get(0));
 		double dirua1 = bezero2.getDirua();
-		double dirua2 = bezero2.getErrepikatzaileak().get(1).getNork().getDirua();
+		double dirua2 = bezero2.getErrepikatzaileak().get(0).getNork().getDirua();
 		assertEquals(da.apustuaEgin(pronostikoak, 50, bezero2), bezero2);
-		assertTrue(bezero2.getDirua() == dirua1 - 10);
+		assertTrue(bezero2.getDirua() == dirua1 - 50);
 		assertTrue(bezero2.getErrepikatzaileak().get(0).getNork().getDirua() == dirua2);
 		da.close();
 		
-		//Errepikatzailearen dirua ez da aldatzen ez daukalako hulabetean diru nahikorik apustua egiteko
+		//Errepikatzailearen dirua ez da aldatzen ez daukalako hilabetean diru nahikorik apustua egiteko
 	}
 	
 	
@@ -150,14 +152,14 @@ public class ApustuaEginDAWTest {
 		ArrayList<Pronostikoa> pronostikoak = new ArrayList<Pronostikoa>();
 		da.open(false);
 		bezero4 = da.getBezeroa(bezero4.getErabiltzaileIzena());
-		pronostikoak.add(event1.getQuestions().get(1).getPronostics().get(0));
+		pronostikoak.add(event1.getQuestions().get(0).getPronostics().get(0));
 		double dirua1 = bezero4.getDirua();
-		double dirua2 = bezero4.getErrepikatzaileak().get(1).getNork().getDirua();
-		assertEquals(da.apustuaEgin(pronostikoak, 50, bezero4), bezero4);
+		double dirua2 = bezero4.getErrepikatzaileak().get(0).getNork().getDirua();
+		assertEquals(da.apustuaEgin(pronostikoak, 10, bezero4), bezero4);
 		assertTrue(bezero4.getDirua() == dirua1 - 10);
 		assertTrue(bezero4.getErrepikatzaileak().get(0).getNork().getDirua() == dirua2);
 		da.close();
 		
-		//Errepikatzailearen dirua ez da aldatzen ez daukalako hulabetean diru nahikorik apustua egiteko
+		//Errepikatzailearen dirua ez da aldatzen ez daukalako hilabetean diru nahikorik apustua egiteko
 	}
 }
