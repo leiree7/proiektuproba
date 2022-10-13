@@ -2,17 +2,19 @@ package gui;
 
 import java.text.DateFormat;
 import java.util.*;
+import java.util.List;
 
 import javax.swing.*;
 
 import com.toedter.calendar.JCalendar;
+
+import businesslogic.BLFacade;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import businessLogic.BLFacade;
 import configuration.UtilDate;
 import domain.Event;
 import exceptions.EventFinished;
@@ -111,7 +113,7 @@ public class CreateQuestionGUI extends JFrame {
 		
 		
 		BLFacade facade = MainGUI.getBusinessLogic();
-		datesWithEventsCurrentMonth=facade.getEventsMonth(jCalendar.getDate());
+		datesWithEventsCurrentMonth=(Vector<Date>) facade.getEventsMonth(jCalendar.getDate());
 		paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
 		
 		
@@ -147,7 +149,7 @@ public class CreateQuestionGUI extends JFrame {
 						
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						datesWithEventsCurrentMonth=facade.getEventsMonth(jCalendar.getDate());
+						datesWithEventsCurrentMonth=(Vector<Date>) facade.getEventsMonth(jCalendar.getDate());
 					}
 
 
@@ -160,7 +162,7 @@ public class CreateQuestionGUI extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						List<Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")

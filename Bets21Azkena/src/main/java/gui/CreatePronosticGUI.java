@@ -2,17 +2,19 @@ package gui;
 
 import java.text.DateFormat;
 import java.util.*;
+import java.util.List;
 
 import javax.swing.*;
 
 import com.toedter.calendar.JCalendar;
+
+import businesslogic.BLFacade;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 
-import businessLogic.BLFacade;
 import configuration.UtilDate;
 import domain.Event;
 import domain.Question;
@@ -40,7 +42,7 @@ public class CreatePronosticGUI extends JFrame {
 	private JLabel jLabelMsg = new JLabel();
 	private JLabel jLabelError = new JLabel();
 
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new Vector<Date>();
 
 	private JComboBox<Question> jComboBoxQuestions;
 	private DefaultComboBoxModel<Question> questionModel = new DefaultComboBoxModel<Question>();
@@ -129,7 +131,7 @@ public class CreatePronosticGUI extends JFrame {
 		BLFacade facade = MainGUI.getBusinessLogic();
 		datesWithEventsCurrentMonth = facade.getEventsMonth(jCalendar.getDate());
 		System.out.println(jCalendar.getDate()+ "<------------------");
-		paintDaysWithEvents(jCalendar, datesWithEventsCurrentMonth);
+		paintDaysWithEvents(jCalendar, (Vector<Date>) datesWithEventsCurrentMonth);
 
 		jLabelEventDate.setBounds(new Rectangle(40, 15, 140, 25));
 		jLabelEventDate.setBounds(40, 16, 140, 25);
@@ -262,7 +264,7 @@ public class CreatePronosticGUI extends JFrame {
 						datesWithEventsCurrentMonth = facade.getEventsMonth(jCalendar.getDate());
 					}
 
-					paintDaysWithEvents(jCalendar, datesWithEventsCurrentMonth);
+					paintDaysWithEvents(jCalendar, (Vector<Date>) datesWithEventsCurrentMonth);
 
 					// Date firstDay = UtilDate.trim(new
 					// Date(jCalendar.getCalendar().getTime().getTime()));
@@ -271,7 +273,7 @@ public class CreatePronosticGUI extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						List<Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")

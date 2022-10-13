@@ -8,8 +8,6 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import businessLogic.BLFacade;
-import businessLogic.BLFacadeImplementation;
 import dataAccess.DataAccess;
 import domain.Event;
 import domain.Question;
@@ -22,6 +20,9 @@ import org.mockito.InjectMocks;
 import org.mockito.Mockito;
 
 import org.mockito.runners.MockitoJUnitRunner;
+
+import businesslogic.BLFacade;
+import businesslogic.BLFacadeImplementation;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CreateQuestionMockInt {

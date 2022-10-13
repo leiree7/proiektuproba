@@ -8,8 +8,6 @@ import java.util.Date;
 
 import org.junit.Test;
 
-import businessLogic.BLFacade;
-import businessLogic.BLFacadeImplementation;
 import configuration.UtilDate;
 import dataAccess.DataAccess;
 import domain.Admin;
@@ -31,6 +29,9 @@ import org.mockito.Mockito;
 
 import org.mockito.runners.MockitoJUnitRunner;
 
+import businesslogic.BLFacade;
+import businesslogic.BLFacadeImplementation;
+
 @RunWith(MockitoJUnitRunner.class)
 public class registerMockInt {
 	@Mock
@@ -51,7 +52,7 @@ public class registerMockInt {
 			Mockito.doReturn(bezero1).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
 
 
-			Bezeroa bezero2 =(Bezeroa)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezeroa");
+			Bezeroa bezero2 =(Bezeroa)sut.register(bezero1, "bezeroa");
 			assertEquals(bezero1,bezero2);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -66,7 +67,7 @@ public class registerMockInt {
 			Mockito.doReturn(admin1).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
 
 
-			Admin admin2 =(Admin)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "admina");
+			Admin admin2 =(Admin)sut.register(admin1, "admina");
 			assertEquals(admin1,admin2);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -80,7 +81,7 @@ public class registerMockInt {
 			Mockito.doReturn(langile1).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
 
 
-			Langilea langile2 =(Langilea)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "langile");
+			Langilea langile2 =(Langilea)sut.register(langile1, "langile");
 			assertEquals(langile1,langile2);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -95,7 +96,7 @@ public class registerMockInt {
 			Mockito.doThrow(new UserAlreadyExist()).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
 
 
-			Bezeroa bezero2 =(Bezeroa)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezero");
+			Bezeroa bezero2 =(Bezeroa)sut.register(bezero1, "bezero");
 
 			//Programa honera ezin du iritsi
 			fail();
@@ -111,9 +112,9 @@ public class registerMockInt {
 			Bezeroa bezero1 = null;
 
 			Mockito.doReturn(null).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
+			Bezeroa bezero11 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
 
-
-			Bezeroa bezero2 =(Bezeroa)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezero");
+			Bezeroa bezero2 =(Bezeroa)sut.register(bezero11, "bezero");
 
 			assertEquals(bezero2,bezero1);
 

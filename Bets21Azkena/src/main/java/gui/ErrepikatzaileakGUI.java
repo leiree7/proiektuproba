@@ -5,7 +5,7 @@ import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
-import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -16,7 +16,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
-import businessLogic.BLFacade;
+import businesslogic.BLFacade;
 import domain.Bezeroa;
 import domain.ErrepikatuakContainer;
 import java.awt.event.MouseAdapter;
@@ -26,8 +26,8 @@ public class ErrepikatzaileakGUI extends JFrame {
 
 	BezeroaGUI aurrekoa;
 	private Bezeroa bezeroa; 
-	private ArrayList<ErrepikatuakContainer> errepikatzaileak;
-	private ArrayList<ErrepikatuakContainer> errepikapenak;
+	private List<ErrepikatuakContainer> errepikatzaileak;
+	private List<ErrepikatuakContainer> errepikapenak;
 	
 	private static final long serialVersionUID = 1L;
 

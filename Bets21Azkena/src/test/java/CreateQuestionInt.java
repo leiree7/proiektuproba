@@ -9,7 +9,7 @@ import java.util.Date;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-import businessLogic.BLFacadeImplementation;
+import businesslogic.BLFacadeImplementation;
 import configuration.ConfigXML;
 import dataAccess.DataAccess;
 import domain.Event;

@@ -1,14 +1,6 @@
-package businessLogic;
-//
-import java.util.Vector;
-import java.util.ArrayList;
+package businesslogic;
 import java.util.Date;
-
-
-
-
-
-//import domain.Booking;
+import java.util.List;
 import domain.Question;
 import domain.Apustua;
 import domain.ArretaElkarrizketa;
@@ -57,7 +49,7 @@ public interface BLFacade  {
 	 * @param date in which events are retrieved
 	 * @return collection of events
 	 */
-	@WebMethod public Vector<Event> getEvents(Date date);
+	@WebMethod public List<Event> getEvents(Date date);
 	
 	/**
 	 * This method retrieves from the database the dates a month for which there are events
@@ -65,7 +57,7 @@ public interface BLFacade  {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	@WebMethod public Vector<Date> getEventsMonth(Date date);
+	@WebMethod public List<Date> getEventsMonth(Date date);
 	
 	/**
 	 * This method calls the data access to initialize the database with some events and questions.
@@ -97,7 +89,7 @@ public interface BLFacade  {
 	 * @return
 	 * @throws UserAlreadyExist
 	 */
-	@WebMethod public Pertsona register(String izena, String abizena1, String abizena2, String erabiltzaileIzena, String pasahitza, String telefonoa, String emaila, Date jaiotzeData, String mota) throws UserAlreadyExist;
+	@WebMethod public Pertsona register(Pertsona per, String mota) throws UserAlreadyExist;
 	
 	/**
 	 * Metodo honek description eta eventDate dituen gertaerarik ez badago datu basean, sortu eta gehitu egiten du
@@ -107,13 +99,13 @@ public interface BLFacade  {
 	 */
 	@WebMethod public void createEvent(String description, Date eventDate) throws EventAlreadyExist;
 	
-	@WebMethod public Vector<Question> getQuestions(Event event);
+	@WebMethod public List<Question> getQuestions(Event event);
 	
 	@WebMethod Pronostikoa createPronostic(Question question, String description, double kuota) throws PronosticAlreadyExist;
 	
 	@WebMethod public void emaitzaIpini(Question question, Pronostikoa pronostikoa);
 	
-	@WebMethod public Bezeroa apustuaEgin(ArrayList<Pronostikoa> pronostikoak, double a, Bezeroa bezero);
+	@WebMethod public Bezeroa apustuaEgin(List<Pronostikoa> pronostikoak, double a, Bezeroa bezero);
 	
 	@WebMethod public Bezeroa deleteApustua(Apustua a) throws EventFinished;
 	
@@ -121,15 +113,15 @@ public interface BLFacade  {
 	
 	@WebMethod public void ezabatuGertaera(Event event);
 	
-	@WebMethod public Bezeroa getBezeroa(String ErabiltzaileIzena);
+	@WebMethod public Bezeroa getBezeroa(String erabiltzaileIzena);
 	
-	@WebMethod public Langilea getLangilea(String ErabiltzaileIzena);
+	@WebMethod public Langilea getLangilea(String erabiltzaileIzena);
 	
-	@WebMethod public Vector<Bezeroa> getBezeroak(String username, Bezeroa bezeroa);
+	@WebMethod public List<Bezeroa> getBezeroak(String username, Bezeroa bezeroa);
 	
 	@WebMethod public Bezeroa bidaliMezua(Bezeroa nork, Bezeroa nori, String mezua, String gaia, String mota, double zenbatApostatu, double hilabeteanZenbat, double zenbatErrepikatuarentzat);
 
-	@WebMethod public Vector<Mezua> getMezuak(Bezeroa bezeroa);
+	@WebMethod public List<Mezua> getMezuak(Bezeroa bezeroa);
 	
 	@WebMethod public void mezuaIrakurri(Mezua mezua);
 	
@@ -139,7 +131,7 @@ public interface BLFacade  {
 	
 	@WebMethod public void errepikatu(Bezeroa nork, Bezeroa nori, double apustatukoDena, double hilabetekoMax, double komisioa);
 	
-	@WebMethod public Vector<PronostikoaContainer> getPronostikoak(Apustua a);
+	@WebMethod public List<PronostikoaContainer> getPronostikoak(Apustua a);
 	
 	@WebMethod public ArretaElkarrizketa arretaMezuaBidali(ArretaElkarrizketa elkarrizketa, String mezua, boolean langileari);
 	
@@ -157,13 +149,13 @@ public interface BLFacade  {
 	
 	@WebMethod public void eguneratuErrepikapenak();
 
-	@WebMethod public Vector<Langilea> getLangileak();
+	@WebMethod public List<Langilea> getLangileak();
 	
-	@WebMethod public ArrayList<ErrepikatuakContainer> getErrepikatzaileak(Bezeroa bezeroa);
+	@WebMethod public List<ErrepikatuakContainer> getErrepikatzaileak(Bezeroa bezeroa);
 	 
 	@WebMethod public void jarraitzeariUtzi(Errepikapena errepikapena);
 		 
-	@WebMethod public ArrayList<ErrepikatuakContainer> getErrepikapenak(Bezeroa bezeroa);
+	@WebMethod public List<ErrepikatuakContainer> getErrepikapenak(Bezeroa bezeroa);
 	
 	@WebMethod public ArretaElkarrizketa getArretaElkarrizketa(Integer id);
 }

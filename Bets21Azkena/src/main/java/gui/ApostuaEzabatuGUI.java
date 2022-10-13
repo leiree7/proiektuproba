@@ -4,11 +4,16 @@ package gui;
 
 
 import java.util.*;
+import java.util.List;
+
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
+
+import businesslogic.BLFacade;
+
 import java.awt.*;
 import java.awt.event.*;
-import businessLogic.BLFacade;
+
 import configuration.UtilDate;
 import domain.Apustua;
 import domain.Bezeroa;
@@ -27,7 +32,7 @@ public class ApostuaEzabatuGUI extends JFrame {
 	private DefaultComboBoxModel<Apustua> apustuakModel = new DefaultComboBoxModel<Apustua>();
 	
 	private Apustua selectedApustua;
-	private Vector<PronostikoaContainer> selectedPronostikoak = new Vector<PronostikoaContainer>();
+	private List<PronostikoaContainer> selectedPronostikoak = new Vector<PronostikoaContainer>();
 	private JButton removeButton;
 	private JScrollPane scrollPaneApustua = new JScrollPane();
 	private JTable tableApustua = new JTable();

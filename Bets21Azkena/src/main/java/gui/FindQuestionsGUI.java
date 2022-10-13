@@ -1,9 +1,11 @@
 package gui;
 
-import businessLogic.BLFacade;
 import configuration.UtilDate;
 
 import com.toedter.calendar.JCalendar;
+
+import businesslogic.BLFacade;
+import domain.Event;
 import domain.Question;
 import javax.swing.*;
 import java.awt.*;
@@ -11,6 +13,7 @@ import java.awt.event.*;
 import java.beans.*;
 import java.text.DateFormat;
 import java.util.*;
+import java.util.List;
 
 import javax.swing.table.DefaultTableModel;
 
@@ -31,7 +34,7 @@ public class FindQuestionsGUI extends JFrame {
 	private JScrollPane scrollPaneEvents = new JScrollPane();
 	private JScrollPane scrollPaneQueries = new JScrollPane();
 	
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new Vector<Date>();
 
 	private JTable tableEvents= new JTable();
 	private JTable tableQueries = new JTable();
@@ -96,7 +99,7 @@ public class FindQuestionsGUI extends JFrame {
 
 		BLFacade facade = MainGUI.getBusinessLogic();
 		datesWithEventsCurrentMonth=facade.getEventsMonth(jCalendar1.getDate());
-		CreateQuestionGUI.paintDaysWithEvents(jCalendar1,datesWithEventsCurrentMonth);
+		CreateQuestionGUI.paintDaysWithEvents(jCalendar1,(Vector<Date>) datesWithEventsCurrentMonth);
 
 		// Code for JCalendar
 		this.jCalendar1.addPropertyChangeListener(new PropertyChangeListener()
@@ -138,7 +141,7 @@ public class FindQuestionsGUI extends JFrame {
 
 
 
-					CreateQuestionGUI.paintDaysWithEvents(jCalendar1,datesWithEventsCurrentMonth);
+					CreateQuestionGUI.paintDaysWithEvents(jCalendar1,(Vector<Date>) datesWithEventsCurrentMonth);
 													
 					
 
@@ -148,7 +151,7 @@ public class FindQuestionsGUI extends JFrame {
 
 						BLFacade facade=MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events=facade.getEvents(firstDay);
+						List<Event> events=facade.getEvents(firstDay);
 
 						if (events.isEmpty() ) jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")+ ": "+dateformat1.format(calendarAct.getTime()));
 						else jLabelEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("Events")+ ": "+dateformat1.format(calendarAct.getTime()));

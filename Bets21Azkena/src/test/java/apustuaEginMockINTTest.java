@@ -12,7 +12,7 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.MockitoJUnitRunner;
 
-import businessLogic.BLFacadeImplementation;
+import businesslogic.BLFacadeImplementation;
 import dataAccess.DataAccess;
 import domain.Bezeroa;
 import domain.BezeroartekoMezua;

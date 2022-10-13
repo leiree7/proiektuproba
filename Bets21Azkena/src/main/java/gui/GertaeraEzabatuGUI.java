@@ -11,6 +11,7 @@ import java.beans.PropertyChangeListener;
 import java.text.DateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import java.util.ResourceBundle;
 import java.util.Vector;
@@ -24,7 +25,7 @@ import javax.swing.JScrollPane;
 
 import com.toedter.calendar.JCalendar;
 
-import businessLogic.BLFacade;
+import businesslogic.BLFacade;
 import configuration.UtilDate;
 import domain.Event;
 
@@ -48,7 +49,7 @@ public class GertaeraEzabatuGUI extends JFrame {
 	private JButton jButtonClose = new JButton(ResourceBundle.getBundle("Etiquetas").getString("Close"));
 	private JLabel jLabelError = new JLabel();
 	
-	private Vector<Date> datesWithEventsCurrentMonth = new Vector<Date>();
+	private List<Date> datesWithEventsCurrentMonth = new Vector<Date>();
 	
 	Event selectedEvent;
 	private final JLabel jLabelErrorDate = new JLabel();
@@ -110,7 +111,7 @@ public class GertaeraEzabatuGUI extends JFrame {
 		
 		BLFacade facade = MainGUI.getBusinessLogic();
 		datesWithEventsCurrentMonth=facade.getEventsMonth(jCalendar.getDate());
-		paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
+		paintDaysWithEvents(jCalendar,(Vector<Date>) datesWithEventsCurrentMonth);
 
 		jLabelEventDate.setBounds(new Rectangle(40, 15, 140, 25));
 		jLabelEventDate.setBounds(40, 16, 140, 25);
@@ -133,7 +134,7 @@ public class GertaeraEzabatuGUI extends JFrame {
 					/* Orain datorren kodea eventuen comboBox-a eguneratzen du */
 					DateFormat dateformat1 = DateFormat.getDateInstance(1, jCalendar.getLocale());
 					
-					Vector<domain.Event> events = facade.getEvents(firstDay);
+					List<Event> events = facade.getEvents(firstDay);
 
 					if (events.isEmpty())
 						jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")
@@ -200,7 +201,7 @@ public class GertaeraEzabatuGUI extends JFrame {
 
 
 
-					paintDaysWithEvents(jCalendar,datesWithEventsCurrentMonth);
+					paintDaysWithEvents(jCalendar,(Vector<Date>) datesWithEventsCurrentMonth);
 
 					//	Date firstDay = UtilDate.trim(new Date(jCalendar.getCalendar().getTime().getTime()));
 					firstDay = UtilDate.trim(calendarAct.getTime());
@@ -208,7 +209,7 @@ public class GertaeraEzabatuGUI extends JFrame {
 					try {
 						BLFacade facade = MainGUI.getBusinessLogic();
 
-						Vector<domain.Event> events = facade.getEvents(firstDay);
+						List<Event> events = facade.getEvents(firstDay);
 
 						if (events.isEmpty())
 							jLabelListOfEvents.setText(ResourceBundle.getBundle("Etiquetas").getString("NoEvents")

@@ -6,7 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
-import businessLogic.BLFacade;
+import businesslogic.BLFacade;
 import domain.Bezeroa;
 
 import javax.swing.JTextField;
@@ -15,8 +15,8 @@ import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Vector;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import java.awt.Font;
@@ -114,7 +114,7 @@ public class ErrepikatzekoEskaeraEginGUI extends JFrame {
 				comboBox.setVisible(false);
 				bezeroakModel.removeAllElements();
 				String text = bilatzailea.getText();
-				Vector<Bezeroa> bezeroak = facade.getBezeroak(text, bezeroa);
+				List<Bezeroa> bezeroak = facade.getBezeroak(text, bezeroa);
 				if(bezeroak.isEmpty()) {
 					erabiltzailerikEz.setText(ResourceBundle.getBundle("Etiquetas").getString("NoUserfound"));
 					comboBox.setVisible(false);

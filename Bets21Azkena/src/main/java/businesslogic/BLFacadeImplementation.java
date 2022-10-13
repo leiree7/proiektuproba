@@ -1,7 +1,8 @@
-package businessLogic;
+package businesslogic;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -32,7 +33,7 @@ import exceptions.UserAlreadyExist;
 /**
  * It implements the business logic as a web service.
  */
-@WebService(endpointInterface = "businessLogic.BLFacade")
+@WebService(endpointInterface = "businesslogic.BLFacade")
 public class BLFacadeImplementation  implements BLFacade {
 	DataAccess dbManager;
 
@@ -97,9 +98,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @return collection of events
 	 */
     @WebMethod	
-	public Vector<Event> getEvents(Date date)  {
+	public ArrayList<Event> getEvents(Date date)  {
 		dbManager.open(false);
-		Vector<Event>  events=dbManager.getEvents(date);
+		ArrayList<Event>  events=dbManager.getEvents(date);
 		dbManager.close();
 		return events;
 	}
@@ -111,9 +112,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	 * @param date of the month for which days with events want to be retrieved 
 	 * @return collection of dates
 	 */
-	@WebMethod public Vector<Date> getEventsMonth(Date date) {
+	@WebMethod public ArrayList<Date> getEventsMonth(Date date) {
 		dbManager.open(false);
-		Vector<Date>  dates=dbManager.getEventsMonth(date);
+		ArrayList<Date>  dates= dbManager.getEventsMonth(date);
 		dbManager.close();
 		return dates;
 	}
@@ -146,9 +147,9 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod
-	public Pertsona register(String izena, String abizena1, String abizena2, String erabiltzaileIzena, String pasahitza, String telefonoZbkia, String email, Date jaiotzeData, String mota) throws UserAlreadyExist{
+	public Pertsona register(Pertsona per, String mota) throws UserAlreadyExist{
     	dbManager.open(false);
-		Pertsona emaitza = dbManager.register(izena, abizena1, abizena2, erabiltzaileIzena, pasahitza, telefonoZbkia, email, jaiotzeData, mota);
+		Pertsona emaitza = dbManager.register(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData, mota);
 		dbManager.close();
 		return emaitza;
     }
@@ -161,9 +162,9 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod	
-	public Vector<Question> getQuestions(Event event)  {
+	public ArrayList<Question> getQuestions(Event event)  {
 		dbManager.open(false);
-		Vector<Question>  questions=dbManager.getQuestions(event);
+		ArrayList<Question>  questions=dbManager.getQuestions(event);
 		dbManager.close();
 		return questions;
 	}
@@ -184,7 +185,7 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod
-    public Bezeroa apustuaEgin(ArrayList<Pronostikoa> pronostikoak, double a, Bezeroa bezero) {
+    public Bezeroa apustuaEgin(List<Pronostikoa> pronostikoak, double a, Bezeroa bezero) {
     	dbManager.open(false);
     	System.out.println(bezero);
     	Bezeroa bezeroa = dbManager.apustuaEgin(pronostikoak,a,bezero);

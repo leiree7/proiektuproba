@@ -3,6 +3,7 @@ package gui;
 import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import java.util.ResourceBundle;
 import java.util.Vector;
 
@@ -14,7 +15,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import businessLogic.BLFacade;
+import businesslogic.BLFacade;
 import domain.Langilea;
 
 public class PuntuazioakIkusiGUI extends JFrame {
@@ -108,7 +109,7 @@ public class PuntuazioakIkusiGUI extends JFrame {
 	public void setLangileak() {
 		Vector<Object> row=null;
 		BLFacade facade=MainGUI.getBusinessLogic();
-		Vector<Langilea> list=facade.getLangileak();
+		List<Langilea> list=facade.getLangileak();
 		int [] balorazioak;
 		
 		for(Langilea l: list) {

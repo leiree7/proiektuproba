@@ -2,14 +2,16 @@ package gui;
 
 
 import java.util.*;
+import java.util.List;
 
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
+import businesslogic.BLFacade;
+
 import java.awt.*;
 import java.awt.event.*;
 
-import businessLogic.BLFacade;
 import domain.ArretaElkarrizketa;
 import domain.ArretaMezua;
 import domain.Bezeroa;
@@ -20,7 +22,7 @@ import domain.Mezua;
 public class PostontziaGUI extends JFrame {
 	BezeroaGUI aurrekoa;
 	private Bezeroa bezeroa; 
-	private Vector<Mezua> mezuak;
+	private List<Mezua> mezuak;
 	private int selectedRowInd;
 	
 	private static final long serialVersionUID = 1L;

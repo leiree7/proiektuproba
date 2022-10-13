@@ -2,25 +2,18 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 import org.junit.BeforeClass;
 import org.junit.Test;
-import org.mockito.Mockito;
 
-import businessLogic.BLFacadeImplementation;
-import configuration.ConfigXML;
+
+import businesslogic.BLFacadeImplementation;
+
 import configuration.UtilDate;
 import dataAccess.DataAccess;
 import domain.Admin;
 import domain.Bezeroa;
-import domain.Event;
 import domain.Langilea;
-import domain.Question;
-import exceptions.EventFinished;
-import exceptions.QuestionAlreadyExist;
 import exceptions.UserAlreadyExist;
 import test.businessLogic.TestFacadeImplementation;
 
@@ -28,8 +21,6 @@ public class registerInt {
 	 static BLFacadeImplementation sut;
 	 static TestFacadeImplementation testBL;
 
-	private Bezeroa bez;
-	
 	@BeforeClass
 	public static void setUpClass() {
 		//sut= new BLFacadeImplementation();
@@ -50,7 +41,7 @@ public class registerInt {
 
 			Bezeroa bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
 
-			Bezeroa bezero2 =(Bezeroa)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezeroa");
+			Bezeroa bezero2 =(Bezeroa)sut.register(bezero1, "bezeroa");
 			assertEquals(bezero1,bezero2);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -61,9 +52,9 @@ public class registerInt {
 	public void test2() {
 		try {
 			Admin admin1 = new Admin("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
+			
 
-
-			Admin admin2 =(Admin)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "admina");
+			Admin admin2 =(Admin)sut.register(admin1, "admina");
 			assertEquals(admin1,admin2);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -74,7 +65,7 @@ public class registerInt {
 		try {
 			Langilea langile1 = new Langilea("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
 
-			Langilea langile2 =(Langilea)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "langile");
+			Langilea langile2 =(Langilea)sut.register(langile1, "langile");
 			assertEquals(langile1,langile2);
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -84,10 +75,11 @@ public class registerInt {
 	@Test
 	public void test4() {
 		try {
-			sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11),"bezeroa");
+			Bezeroa bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
+			sut.register(bezero1,"bezeroa");
 			
 			
-			Bezeroa bezero2 =(Bezeroa)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezero");
+			bezero1 =(Bezeroa)sut.register(bezero1, "bezero");
 
 			//Programa honera ezin du iritsi
 			fail();
@@ -100,7 +92,8 @@ public class registerInt {
 	@Test
 	public void test5() {
 		try {
-			Bezeroa bezero1 =(Bezeroa)sut.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezero");
+			Bezeroa bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
+			bezero1 =(Bezeroa)sut.register(bezero1, "bezero");
 
 		}catch(NullPointerException e) {
 		assertTrue(true);

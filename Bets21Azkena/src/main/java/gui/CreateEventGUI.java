@@ -7,10 +7,11 @@ import javax.swing.*;
 
 import com.toedter.calendar.JCalendar;
 
+import businesslogic.BLFacade;
+
 import java.awt.*;
 import java.awt.event.*;
 
-import businessLogic.BLFacade;
 import configuration.UtilDate;
 import domain.Event;
 import exceptions.EventAlreadyExist;

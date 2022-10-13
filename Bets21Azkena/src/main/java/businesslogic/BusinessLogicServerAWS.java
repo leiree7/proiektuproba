@@ -1,4 +1,4 @@
-package businessLogic;
+package businesslogic;
 
 import javax.xml.ws.Endpoint;
 
