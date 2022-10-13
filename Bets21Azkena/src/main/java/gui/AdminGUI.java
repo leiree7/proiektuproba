@@ -22,7 +22,6 @@ public class AdminGUI extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = -8301123738250509410L;
-	private JPanel contentPane;
 	private MainGUI lehengoMain;
 	private Admin admin;
 	private JLabel done;
@@ -31,14 +30,19 @@ public class AdminGUI extends JFrame {
 		try {
 			this.lehengoMain=lehengoMain;
 			this.admin=admin;
-			AdminGUIExekuzioa();
+			adminGUIExekuzioa();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 	}
 
-	public void AdminGUIExekuzioa() throws Exception{
-		this.setTitle(ResourceBundle.getBundle("Etiquetas").getString("Admin")); //$NON-NLS-1$ //$NON-NLS-2$
+	//Kodea simplifikatu
+	
+	public void adminGUIExekuzioa() throws Exception{
+		String etiketa = "Etiquetas";
+		JPanel contentPane;
+		
+		this.setTitle(ResourceBundle.getBundle(etiketa).getString("Admin")); //$NON-NLS-1$ //$NON-NLS-2$
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 332);
@@ -47,11 +51,11 @@ public class AdminGUI extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JLabel lblNewLabel = new JLabel(ResourceBundle.getBundle("Etiquetas").getString("Welcome")+" "+admin.getErabiltzaileIzena()+"!"); //$NON-NLS-1$ //$NON-NLS-2$
+		JLabel lblNewLabel = new JLabel(ResourceBundle.getBundle(etiketa).getString("Welcome")+" "+admin.getErabiltzaileIzena()+"!"); //$NON-NLS-1$ //$NON-NLS-2$
 		lblNewLabel.setBounds(124, 23, 250, 29);
 		contentPane.add(lblNewLabel);
 		
-		JButton btnNewButton = new JButton(ResourceBundle.getBundle("Etiquetas").getString("SignOut"));
+		JButton btnNewButton = new JButton(ResourceBundle.getBundle(etiketa).getString("SignOut"));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				saioaItxi();
@@ -67,7 +71,7 @@ public class AdminGUI extends JFrame {
 				done.setText("");
 			}
 		});
-		btnCreateQuestion.setText(ResourceBundle.getBundle("Etiquetas").getString("CreateQuestion")); //$NON-NLS-1$ //$NON-NLS-2$
+		btnCreateQuestion.setText(ResourceBundle.getBundle(etiketa).getString("CreateQuestion")); //$NON-NLS-1$ //$NON-NLS-2$
 		btnCreateQuestion.setBounds(10, 50, 408, 66);
 		contentPane.add(btnCreateQuestion);
 		
@@ -76,10 +80,10 @@ public class AdminGUI extends JFrame {
 			public void actionPerformed(ActionEvent arg0) {
 				BLFacade facade=MainGUI.getBusinessLogic();
 				facade.eguneratuErrepikapenak();
-				done.setText(ResourceBundle.getBundle("Etiquetas").getString("Done"));
+				done.setText(ResourceBundle.getBundle(etiketa).getString("Done"));
 			}
 		});
-		eguneratuHilabetekoak.setText(ResourceBundle.getBundle("Etiquetas").getString("ResetMonth")); //$NON-NLS-1$ //$NON-NLS-2$
+		eguneratuHilabetekoak.setText(ResourceBundle.getBundle(etiketa).getString("ResetMonth")); //$NON-NLS-1$ //$NON-NLS-2$
 		eguneratuHilabetekoak.setBounds(10, 180, 408, 66);
 		contentPane.add(eguneratuHilabetekoak);
 		
@@ -89,7 +93,7 @@ public class AdminGUI extends JFrame {
 				irekiPuntuazioakIkusi();
 			}
 		});
-		puntuazioakIkusi.setText(ResourceBundle.getBundle("Etiquetas").getString("ViewWorker")); //$NON-NLS-1$ //$NON-NLS-2$
+		puntuazioakIkusi.setText(ResourceBundle.getBundle(etiketa).getString("ViewWorker")); //$NON-NLS-1$ //$NON-NLS-2$
 		puntuazioakIkusi.setBounds(10, 115, 408, 66);
 		contentPane.add(puntuazioakIkusi);
 		

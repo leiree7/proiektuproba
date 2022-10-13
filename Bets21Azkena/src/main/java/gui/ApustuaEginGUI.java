@@ -88,6 +88,8 @@ public class ApustuaEginGUI extends JFrame {
 		}
 	}
 
+	//XD que cojones pq es tan largo
+	
 	private void jbInit() throws Exception {
 		
 		this.getContentPane().setLayout(null);
@@ -195,7 +197,7 @@ public class ApustuaEginGUI extends JFrame {
 						double minBet = getMinBet();
 						if(bet<minBet) {
 							jLabelMsg.setForeground(Color.RED);
-							jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("NotMinBet")+" "+minBet+"€");
+							jLabelMsg.setText(ResourceBundle.getBundle("Etiquetas").getString("NotMinBet")+" "+minBet+"ï¿½");
 						}else{
 							BLFacade facade = MainGUI.getBusinessLogic();
 							bezeroa=facade.apustuaEgin(pronostikoak,bet,bezeroa);
