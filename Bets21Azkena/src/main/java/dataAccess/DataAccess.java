@@ -220,14 +220,7 @@ public class DataAccess {
 			db.persist(apustu2);
 
 			Mugimendua m1,m2,m3,m4;
-
-			m1 = b2.addMugimendua("Bankuko diru-sarrera", 52, "bankua", UtilDate.newDate(2021, 2, 15));
-			m2 = b2.addMugimendua("Apustua egin", -2, "jokatu", UtilDate.newDate(2021, 2, 16));
-			m3 = b2.addMugimendua("Bankuko diru-sarrera", 30, "bankua", UtilDate.newDate(2021, 2, 15));
-			m4 = b5.addMugimendua("Apustu errepikatua egin ("+b2+")", -4, "jokatu", UtilDate.newDate(2021, 2, 16));
-
-
-			m1 = b2.addMugimendua("Bankuko diru-sarrera", 52, BANKUA, UtilDate.newDate(2021, 2, 15));
+			
 			m1 = b2.addMugimendua(BANKUKO_DIRU_SARRERA, 52, BANKUA, UtilDate.newDate(2021, 2, 15));
 			m2 = b2.addMugimendua("Apustua egin", -2, JOKATU, UtilDate.newDate(2021, 2, 16));
 			m3 = b2.addMugimendua(BANKUKO_DIRU_SARRERA, 30, BANKUA, UtilDate.newDate(2021, 2, 15));
