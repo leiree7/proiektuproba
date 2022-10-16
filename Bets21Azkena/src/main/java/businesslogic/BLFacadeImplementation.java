@@ -60,7 +60,7 @@ public class BLFacadeImplementation  implements BLFacade {
 		dbManager=da;		
 	}
 	
-//
+
 	/**
 	 * This method creates a question for an event, with a question text and the minimum bet
 	 * 

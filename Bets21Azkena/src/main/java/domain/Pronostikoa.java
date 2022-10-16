@@ -65,7 +65,7 @@ public class Pronostikoa implements Serializable{
 	public void setApustuak(ArrayList<Apustua> apustuak) {
 		this.apustuak = apustuak;
 	}
-	//
+	
 
 	public Pronostikoa(String deskripzioa, double kuota) {
 		this.deskripzioa = deskripzioa;
