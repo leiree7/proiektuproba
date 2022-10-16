@@ -35,7 +35,7 @@ public class registerDAW {
     public void test1() {
         try {
         bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
-        bezero2 = (Bezeroa)db.register(bezero1, "bezeroa" );
+        bezero2 = (Bezeroa)db.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezeroa" );
         assertEquals(bezero1,bezero2);
         }catch(Exception e) {
             e.printStackTrace();
@@ -47,7 +47,7 @@ public class registerDAW {
     public void test2() {
         try {
         bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
-        bezero2 = (Bezeroa)db.register(bezero1, "bezeroa" );
+        bezero2 = (Bezeroa)db.register("Unax", "Labaka", "Zubimendi", "Ulabak", null, "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezeroa" );
         }catch(Exception e) {
             assertTrue(true);
         }
@@ -57,8 +57,8 @@ public class registerDAW {
     public void test3() {
         try {
         bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
-        db.register(bezero1, "bezeroa");
-        bezero2 = (Bezeroa)db.register(bezero1, "bezeroa" );
+        db.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezeroa");
+        bezero2 = (Bezeroa)db.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "bezeroa" );
         fail();
 
         }catch(UserAlreadyExist e) {
@@ -79,7 +79,7 @@ public class registerDAW {
     public void test4() {
         try {
         admin1 = new Admin("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
-        bezero2 = (Bezeroa)db.register(admin1, "admin" );
+        bezero2 = (Bezeroa)db.register("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "admin" );
 
         assertEquals(admin1,bezero2);
 
@@ -95,7 +95,7 @@ public class registerDAW {
     public void test5() {
         try {
         langile1 = new Langilea("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
-        bezero2 = (Bezeroa)db.register(langile1, "langilea" );
+        bezero2 = (Bezeroa)db.register("Unax", "Labaka", "Zubimendi", "Ulabak", null, "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11), "langilea" );
         assertEquals(langile1, bezero2);
         }catch(Exception e) {
             e.printStackTrace();
