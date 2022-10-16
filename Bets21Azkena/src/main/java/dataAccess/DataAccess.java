@@ -690,6 +690,7 @@ public class DataAccess {
 		return res;
 	}
 
+	
 	public BezeroartekoMezua bidaliMezua(Bezeroa nork, Bezeroa nori, String mezua, String gaia, String mota, double zenbatApostatu, double hilabeteanZenbat, double zenbatErrepikatuarentzat) {
 		Bezeroa igorlea = db.find(Bezeroa.class, nork.getErabiltzaileIzena());
 		Bezeroa hartzailea = db.find(Bezeroa.class, nori.getErabiltzaileIzena());
