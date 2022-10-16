@@ -15,6 +15,7 @@ import domain.Apustua;
 import domain.ArretaElkarrizketa;
 import domain.Bezeroa;
 import domain.BezeroaContainer;
+import domain.BezeroartekoMezua;
 import domain.Errepikapena;
 import domain.ErrepikatuakContainer;
 import domain.Event;
@@ -240,9 +241,9 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod 
-    public Bezeroa bidaliMezua(Bezeroa nork, Bezeroa nori, String mezua, String gaia, String mota, double zenbatApostatu, double hilabeteanZenbat, double zenbatErrepikatuarentzat) {
+    public Bezeroa bidaliMezua(Bezeroa nork, Bezeroa nori, BezeroartekoMezua mezua) {
     	dbManager.open(false);
-    	Bezeroa bezeroa = dbManager.bidaliMezua(nork, nori, mezua, gaia, mota, zenbatApostatu, hilabeteanZenbat, zenbatErrepikatuarentzat).getIgorlea();
+    	Bezeroa bezeroa = dbManager.bidaliMezua(nork, nori, mezua).getIgorlea();
     	dbManager.close();
     	return bezeroa;
     }

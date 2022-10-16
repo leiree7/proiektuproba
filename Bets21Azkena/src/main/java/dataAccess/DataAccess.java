@@ -691,11 +691,11 @@ public class DataAccess {
 	}
 
 	
-	public BezeroartekoMezua bidaliMezua(Bezeroa nork, Bezeroa nori, String mezua, String gaia, String mota, double zenbatApostatu, double hilabeteanZenbat, double zenbatErrepikatuarentzat) {
+	public BezeroartekoMezua bidaliMezua(Bezeroa nork, Bezeroa nori, BezeroartekoMezua mezua) {
 		Bezeroa igorlea = db.find(Bezeroa.class, nork.getErabiltzaileIzena());
 		Bezeroa hartzailea = db.find(Bezeroa.class, nori.getErabiltzaileIzena());
 		db.getTransaction().begin();
-		BezeroartekoMezua mezuBerria = igorlea.addBidalitakoBezeroMezua(nori, mezua, gaia, mota, zenbatApostatu, hilabeteanZenbat, zenbatErrepikatuarentzat);
+		BezeroartekoMezua mezuBerria = igorlea.addBidalitakoBezeroMezua( mezua);
 		hartzailea.addJasotakoBezeroMezua(mezuBerria);
 		db.persist(mezuBerria);
 		db.getTransaction().commit();

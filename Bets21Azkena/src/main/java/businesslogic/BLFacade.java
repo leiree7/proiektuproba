@@ -6,6 +6,7 @@ import domain.Apustua;
 import domain.ArretaElkarrizketa;
 import domain.Bezeroa;
 import domain.BezeroaContainer;
+import domain.BezeroartekoMezua;
 import domain.Errepikapena;
 import domain.ErrepikatuakContainer;
 import domain.Event;
@@ -119,7 +120,7 @@ public interface BLFacade  {
 	
 	@WebMethod public List<Bezeroa> getBezeroak(String username, Bezeroa bezeroa);
 	
-	@WebMethod public Bezeroa bidaliMezua(Bezeroa nork, Bezeroa nori, String mezua, String gaia, String mota, double zenbatApostatu, double hilabeteanZenbat, double zenbatErrepikatuarentzat);
+	@WebMethod public Bezeroa bidaliMezua(Bezeroa nork, Bezeroa nori,  BezeroartekoMezua mezua);
 
 	@WebMethod public List<Mezua> getMezuak(Bezeroa bezeroa);
 	

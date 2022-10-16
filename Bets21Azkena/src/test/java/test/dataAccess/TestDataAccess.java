@@ -111,7 +111,7 @@ public class TestDataAccess {
 			Bezeroa igorlea = db.find(Bezeroa.class, nork.getErabiltzaileIzena());
 			Bezeroa hartzailea = db.find(Bezeroa.class, nori.getErabiltzaileIzena());
 			db.getTransaction().begin();
-			BezeroartekoMezua mezuBerria = igorlea.addBidalitakoBezeroMezua(nori, mezua, gaia, mota, zenbatApostatu, hilabeteanZenbat, zenbatErrepikatuarentzat);
+			BezeroartekoMezua mezuBerria = igorlea.addBidalitakoBezeroMezua(null);
 			hartzailea.addJasotakoBezeroMezua(mezuBerria);
 			db.persist(mezuBerria);
 			db.getTransaction().commit();

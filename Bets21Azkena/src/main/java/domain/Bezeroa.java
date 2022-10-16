@@ -159,8 +159,8 @@ public class Bezeroa extends Pertsona implements Serializable{
 		return erabiltzaileIzena;
 	}
 	
-	public BezeroartekoMezua addBidalitakoBezeroMezua(Bezeroa nori, String mezua, String gaia, String mota, double zenbatApostatu, double hilabeteanZenbat, double zenbatErrepikatuarentzat) {
-		BezeroartekoMezua bidalitakoMezua = new BezeroartekoMezua(mezua, gaia, mota, zenbatApostatu, hilabeteanZenbat, zenbatErrepikatuarentzat, this, nori);
+	public BezeroartekoMezua addBidalitakoBezeroMezua(BezeroartekoMezua mezua) {
+		BezeroartekoMezua bidalitakoMezua = new BezeroartekoMezua(mezua.getMezua(), mezua.getGaia(), mezua.getMota(), mezua.getZenbatApostatu(), mezua.getHilabeteanZenbat(), mezua.getZenbatErrepikatuarentzat(), this, mezua.getHartzailea());
 		bidalitakoBezeroMezuak.add(bidalitakoMezua);
 		return bidalitakoMezua;
 	}
