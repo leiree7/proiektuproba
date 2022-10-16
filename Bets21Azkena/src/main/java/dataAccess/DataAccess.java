@@ -701,7 +701,7 @@ public class DataAccess {
 		db.getTransaction().commit();
 		return mezuBerria;
 	}
-  
+	
 	public void removePertsona(String erabiltzaileIzena) {
 		Pertsona p1 = db.find(Pertsona.class, erabiltzaileIzena);
 		db.getTransaction().begin();
