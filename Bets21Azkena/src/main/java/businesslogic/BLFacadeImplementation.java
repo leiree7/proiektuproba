@@ -149,7 +149,7 @@ public class BLFacadeImplementation  implements BLFacade {
     @WebMethod
 	public Pertsona register(Pertsona per, String mota) throws UserAlreadyExist{
     	dbManager.open(false);
-		Pertsona emaitza = dbManager.register(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData, mota);
+		Pertsona emaitza = dbManager.register(per, mota);
 		dbManager.close();
 		return emaitza;
     }

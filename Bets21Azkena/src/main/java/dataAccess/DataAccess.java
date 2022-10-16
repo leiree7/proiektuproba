@@ -112,27 +112,29 @@ public class DataAccess {
 			Question q4;
 			Question q5;
 			Question q6;
-
+			String qgep = "¿Quién ganará el partido?";
+			String zidp = "Zeinek irabaziko du partidua?";
+			String wwwtm = "Who will win the match?";
 			if (Locale.getDefault().equals(new Locale("es"))) {
-				q1 = ev1.addQuestion("¿Quién ganará el partido?", 1);
+				q1 = ev1.addQuestion(qgep, 1);
 				q2 = ev1.addQuestion("¿Quién meterá el primer gol?", 2);
-				q3 = ev11.addQuestion("¿Quién ganará el partido?", 1);
+				q3 = ev11.addQuestion(qgep, 1);
 				q4 = ev11.addQuestion("¿Cuántos goles se marcarán?", 2);
-				q5 = ev17.addQuestion("¿Quién ganará el partido?", 1);
+				q5 = ev17.addQuestion(qgep, 1);
 				q6 = ev17.addQuestion("¿Habrá goles en la primera parte?", 2);
 			} else if (Locale.getDefault().equals(new Locale("en"))) {
-				q1 = ev1.addQuestion("Who will win the match?", 1);
+				q1 = ev1.addQuestion(wwwtm, 1);
 				q2 = ev1.addQuestion("Who will score first?", 2);
-				q3 = ev11.addQuestion("Who will win the match?", 1);
+				q3 = ev11.addQuestion(wwwtm, 1);
 				q4 = ev11.addQuestion("How many goals will be scored in the match?", 2);
-				q5 = ev17.addQuestion("Who will win the match?", 1);
+				q5 = ev17.addQuestion(wwwtm, 1);
 				q6 = ev17.addQuestion("Will there be goals in the first half?", 2);
 			} else {
-				q1 = ev1.addQuestion("Zeinek irabaziko du partidua?", 1);
+				q1 = ev1.addQuestion(zidp, 1);
 				q2 = ev1.addQuestion("Zeinek sartuko du lehenengo gola?", 2);
-				q3 = ev11.addQuestion("Zeinek irabaziko du partidua?", 1);
+				q3 = ev11.addQuestion(zidp, 1);
 				q4 = ev11.addQuestion("Zenbat gol sartuko dira?", 2);
-				q5 = ev17.addQuestion("Zeinek irabaziko du partidua?", 1);
+				q5 = ev17.addQuestion(zidp, 1);
 				q6 = ev17.addQuestion("Golak sartuko dira lehenengo zatian?", 2);
 			}
 
@@ -157,9 +159,9 @@ public class DataAccess {
 			Event event1 = new Event(21,"Eibar-Celta", UtilDate.newDate(2021, 2, 17));
 			Event event2 = new Event(22,"Granada-Athletic", UtilDate.newDate(2021, 2, 17));
 			
-			Question ques1 = event1.addQuestion("Zeinek irabaziko du partidua?", 1);
+			Question ques1 = event1.addQuestion(zidp, 1);
 			Question ques2 = event1.addQuestion("Zeinek sartuko du lehenengo gola?", 1);
-			Question ques3 = event2.addQuestion("Zeinek irabaziko du partidua?", 1);
+			Question ques3 = event2.addQuestion(zidp, 1);
 			Question ques4 = event2.addQuestion("Golik sartuko al da lehen zatian?", 1);
 			
 			Pronostikoa pronos1, pronos2, pronos3, pronos4, pronos5, pronos6, pronos7, pronos8, pronos9, pronos10, pronos11, pronos12, pronos13, pronos14, pronos15, pronos16, pronos17;
@@ -417,20 +419,20 @@ public class DataAccess {
 	
 	//Bajarle la cantidad de parametros
 	
-	public Pertsona register(String izena, String abizena1, String abizena2, String erabiltzaileIzena, String pasahitza, String telefonoZbkia, String emaila, Date jaiotzeData, String mota) throws UserAlreadyExist{
+	public Pertsona register(Pertsona per, String mota) throws UserAlreadyExist{
 		TypedQuery<Pertsona> query = db.createQuery("SELECT p FROM Pertsona p WHERE p.erabiltzaileIzena=?1", Pertsona.class);
-		query.setParameter(1, erabiltzaileIzena);
+		query.setParameter(1, per.erabiltzaileIzena);
 		List<Pertsona> pertsona = query.getResultList();
 		if(!pertsona.isEmpty()) {
 			throw new UserAlreadyExist();
 		}else {
 			Pertsona berria = null;
 			if(mota.equals("admin")) {
-				berria = new Admin(izena, abizena1, abizena2, erabiltzaileIzena, pasahitza, telefonoZbkia, emaila, jaiotzeData);
+				berria = new Admin(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
 			}else if (mota.equals("langilea")) {
-				berria = new Langilea(izena, abizena1, abizena2, erabiltzaileIzena, pasahitza, telefonoZbkia, emaila, jaiotzeData);
+				berria = new Langilea(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
 			}else if (mota.equals("bezeroa")) {
-				berria = new Bezeroa(izena, abizena1, abizena2, erabiltzaileIzena, pasahitza, telefonoZbkia, emaila, jaiotzeData);
+				berria = new Bezeroa(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
 			}
 			db.getTransaction().begin();
 			db.persist(berria);
