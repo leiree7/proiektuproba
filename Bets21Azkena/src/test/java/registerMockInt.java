@@ -49,7 +49,7 @@ public class registerMockInt {
 		try {
 			Bezeroa bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
 
-			Mockito.doReturn(bezero1).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
+			Mockito.doReturn(bezero1).when(mockitoDA).register(Mockito.any(Pertsona.class),Mockito.anyString());
 
 
 			Bezeroa bezero2 =(Bezeroa)sut.register(bezero1, "bezeroa");
@@ -64,7 +64,7 @@ public class registerMockInt {
 		try {
 			Admin admin1 = new Admin("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
 
-			Mockito.doReturn(admin1).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
+			Mockito.doReturn(admin1).when(mockitoDA).register(Mockito.any(Pertsona.class),Mockito.anyString());
 
 
 			Admin admin2 =(Admin)sut.register(admin1, "admina");
@@ -78,7 +78,7 @@ public class registerMockInt {
 		try {
 			Langilea langile1 = new Langilea("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
 
-			Mockito.doReturn(langile1).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
+			Mockito.doReturn(langile1).when(mockitoDA).register(Mockito.any(Pertsona.class),Mockito.anyString());
 
 
 			Langilea langile2 =(Langilea)sut.register(langile1, "langile");
@@ -93,9 +93,8 @@ public class registerMockInt {
 		try {
 			Bezeroa bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
 
-			Mockito.doThrow(new UserAlreadyExist()).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
-
-
+			Mockito.doThrow(new UserAlreadyExist()).when(mockitoDA).register(Mockito.any(Pertsona.class),Mockito.anyString());
+			
 			Bezeroa bezero2 =(Bezeroa)sut.register(bezero1, "bezero");
 
 			//Programa honera ezin du iritsi
@@ -111,7 +110,7 @@ public class registerMockInt {
 		try {
 			Bezeroa bezero1 = null;
 
-			Mockito.doReturn(null).when(mockitoDA).register(Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.anyString(),Mockito.any(Date.class),Mockito.anyString());
+			Mockito.doReturn(null).when(mockitoDA).register(Mockito.any(Pertsona.class),Mockito.anyString());
 			Bezeroa bezero11 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
 
 			Bezeroa bezero2 =(Bezeroa)sut.register(bezero11, "bezero");
