@@ -117,7 +117,7 @@ public class TestDataAccess {
 			db.getTransaction().commit();
 			return mezuBerria;
 	    }
-	
+	//
 		public Pertsona register(String izena, String abizena1, String abizena2, String erabiltzaileIzena, String pasahitza, String telefonoZbkia, String emaila, Date jaiotzeData, String mota) throws UserAlreadyExist{
 			TypedQuery<Pertsona> query = db.createQuery("SELECT p FROM Pertsona p WHERE p.erabiltzaileIzena=?1", Pertsona.class);
 			query.setParameter(1, erabiltzaileIzena);

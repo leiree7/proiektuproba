@@ -20,7 +20,7 @@ public class Bezeroa extends Pertsona implements Serializable{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-
+//
 	private double dirua;
 	private Integer jokatuak;
 	private Integer irabaziak;
