@@ -45,8 +45,6 @@ import exceptions.UserAlreadyExist;
  * It implements the data access to the objectDb database
  */
 public class DataAccess {
-	private static final String TELEFONO_ZENBAKIA = "123456789";
-	private static final String BANKUKO_DIRU_SARRERA = "Bankuko diru-sarrera";
 	private static final String BUELTATU = "bueltatu";
 	private static final String AAAAAAAA = "aaaaaaaa";
 	private static final String IRABAZI = "irabazi";
@@ -151,20 +149,20 @@ public class DataAccess {
 			Langilea l1 = new Langilea("Oier", "Elola", "Urkizu", "Elola", AAAAAAAA, "987654321", "oierurkizu@gmail.com", UtilDate.newDate(2001,7,23));
 			Langilea l2 = new Langilea("Unax", "Lazkanotegi", "Bengoetxea", "UnaxLazka", AAAAAAAA, "384625395","UnaxLazka@gmail.com", UtilDate.newDate(2001,7,23));
 			
+			Bezeroa b1 = new Bezeroa("Tarek", "Chamkhi", "Ermina", "Tarek12301", AAAAAAAA, "123456789", "Tarek12301@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b2 = new Bezeroa("Josu", "Loidi", "Gorostidi", "Josulo", AAAAAAAA, "123456789", "josulo@gmail.com",UtilDate.newDate(2001,8,9));
 
-			Bezeroa b1 = new Bezeroa("Tarek", "Chamkhi", "Ermina", "Tarek12301", AAAAAAAA, TELEFONO_ZENBAKIA, "Tarek12301@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b2 = new Bezeroa("Josu", "Loidi", "Gorostidi", "Josulo", AAAAAAAA, TELEFONO_ZENBAKIA, "josulo@gmail.com",UtilDate.newDate(2001,8,9));
 			b2.setPublikoa(false);
+			Bezeroa b3 = new Bezeroa("Jose", "Garc�a", "Perez", "JoseRamon", AAAAAAAA, "123456789", "JoseRamon@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b4 = new Bezeroa("Josu", "Perez", "Galdos", "Josueeee", AAAAAAAA, "123456789", "Josueeee@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b5 = new Bezeroa("Saioa", "Goikoetxea", "Ugarte", "Saioo99", "b", "123456789", "Saioo99@gmail.com",UtilDate.newDate(2001,8,9));
 
-			Bezeroa b3 = new Bezeroa("Jose", "Garc�a", "Perez", "JoseRamon", AAAAAAAA, TELEFONO_ZENBAKIA, "JoseRamon@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b4 = new Bezeroa("Josu", "Perez", "Galdos", "Josueeee", AAAAAAAA, TELEFONO_ZENBAKIA, "Josueeee@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b5 = new Bezeroa("Saioa", "Goikoetxea", "Ugarte", "Saioo99", "b", TELEFONO_ZENBAKIA, "Saioo99@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b6 = new Bezeroa("Mikel", "Artola", "Peraz", "Gamer75", AAAAAAAA, TELEFONO_ZENBAKIA, "Gamer75@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b7 = new Bezeroa("Pello", "Garcia", "Lorca", "PelloJoxepe", AAAAAAAA, TELEFONO_ZENBAKIA, "PelloJoxepe@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b8 = new Bezeroa("Karmele", "Loidi", "Gorostidi", "Katuu19", AAAAAAAA, TELEFONO_ZENBAKIA, "Katuu19@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b9 = new Bezeroa("Eneko", "Sagastume", "Ontsalo", "Ontsalo", AAAAAAAA, TELEFONO_ZENBAKIA, "Ontsalo@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b10 = new Bezeroa("Naiara", "Agirre", "Urriza", "Na1ara", AAAAAAAA, TELEFONO_ZENBAKIA, "Na1ara@gmail.com",UtilDate.newDate(2001,8,9));
 
+			Bezeroa b6 = new Bezeroa("Mikel", "Artola", "Peraz", "Gamer75", AAAAAAAA, "123456789", "Gamer75@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b7 = new Bezeroa("Pello", "Garcia", "Lorca", "PelloJoxepe", AAAAAAAA, "123456789", "PelloJoxepe@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b8 = new Bezeroa("Karmele", "Loidi", "Gorostidi", "Katuu19", AAAAAAAA, "123456789", "Katuu19@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b9 = new Bezeroa("Eneko", "Sagastume", "Ontsalo", "Ontsalo", AAAAAAAA, "123456789", "Ontsalo@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b10 = new Bezeroa("Naiara", "Agirre", "Urriza", "Na1ara", AAAAAAAA, "123456789", "Na1ara@gmail.com",UtilDate.newDate(2001,8,9));
 			
 			
 			Event event1 = new Event(21,"Eibar-Celta", UtilDate.newDate(2021, 2, 17));
@@ -188,12 +186,6 @@ public class DataAccess {
 			pronos10 = ques4.addPronostic("Bai", (double)1.3);
 			pronos11 = ques4.addPronostic("Ez", (double)2.5);//
 
-			pronos12 = q1.addPronostic("1", (double)1.2);
-			pronos13 = q1.addPronostic("X", (double)1.5);//
-			pronos14 = q1.addPronostic("2", (double)1.8);
-			pronos15 = q2.addPronostic("1", (double)1.2);//
-			pronos16 = q2.addPronostic("2", (double)1.6);
-			pronos17 = q2.addPronostic("Golik ez", (double)1.8);
 			pronos12 = q3.addPronostic("1", (double)1.2);
 			pronos13 = q3.addPronostic("X", (double)1.5);//
 			pronos14 = q3.addPronostic("2", (double)1.8);
@@ -221,16 +213,9 @@ public class DataAccess {
 
 			Mugimendua m1,m2,m3,m4;
 
-			m1 = b2.addMugimendua("Bankuko diru-sarrera", 52, "bankua", UtilDate.newDate(2021, 2, 15));
-			m2 = b2.addMugimendua("Apustua egin", -2, "jokatu", UtilDate.newDate(2021, 2, 16));
-			m3 = b2.addMugimendua("Bankuko diru-sarrera", 30, "bankua", UtilDate.newDate(2021, 2, 15));
-			m4 = b5.addMugimendua("Apustu errepikatua egin ("+b2+")", -4, "jokatu", UtilDate.newDate(2021, 2, 16));
-
-
 			m1 = b2.addMugimendua("Bankuko diru-sarrera", 52, BANKUA, UtilDate.newDate(2021, 2, 15));
-			m1 = b2.addMugimendua(BANKUKO_DIRU_SARRERA, 52, BANKUA, UtilDate.newDate(2021, 2, 15));
 			m2 = b2.addMugimendua("Apustua egin", -2, JOKATU, UtilDate.newDate(2021, 2, 16));
-			m3 = b2.addMugimendua(BANKUKO_DIRU_SARRERA, 30, BANKUA, UtilDate.newDate(2021, 2, 15));
+			m3 = b2.addMugimendua("Bankuko diru-sarrera", 30, BANKUA, UtilDate.newDate(2021, 2, 15));
 			m4 = b5.addMugimendua("Apustu errepikatua egin ("+b2+")", -4, JOKATU, UtilDate.newDate(2021, 2, 16));
 			
 			db.persist(event1);
@@ -631,7 +616,7 @@ public class DataAccess {
 	public Bezeroa diruaSartu(double u, Bezeroa bezeroa) {
 		db.getTransaction().begin();
 		Bezeroa erabiltzaile = db.find(Bezeroa.class, bezeroa.getErabiltzaileIzena());
-		erabiltzaile.addMugimendua(BANKUKO_DIRU_SARRERA, u, BANKUA);
+		erabiltzaile.addMugimendua("Bankuko diru-sarrera", u, BANKUA);
 		db.persist(erabiltzaile);
 		db.getTransaction().commit();
 		return erabiltzaile;
@@ -684,14 +669,12 @@ public class DataAccess {
 		}
 	}
 
-	public Bezeroa getBezeroa(String ErabiltzaileIzena) {
-		Bezeroa erabiltzaile = db.find(Bezeroa.class, ErabiltzaileIzena);
-		return erabiltzaile;
+	public Bezeroa getBezeroa(String erabiltzaileIzena) {
+		return db.find(Bezeroa.class, erabiltzaileIzena);
 	}
 
-	public Langilea getLangilea(String ErabiltzaileIzena) {
-		Langilea erabiltzaile = db.find(Langilea.class, ErabiltzaileIzena);
-		return erabiltzaile;
+	public Langilea getLangilea(String erabiltzaileIzena) {
+		return db.find(Langilea.class, erabiltzaileIzena);
 	}
 
 	public Vector<Bezeroa> getBezeroak(String username, Bezeroa bezeroa){
