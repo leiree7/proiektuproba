@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.Vector;
 
 import javax.jws.WebMethod;
 import javax.jws.WebService;
@@ -233,9 +232,9 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod 
-    public Vector<Bezeroa> getBezeroak(String username, Bezeroa bezeroa){
+    public ArrayList<Bezeroa> getBezeroak(String username, Bezeroa bezeroa){
     	dbManager.open(false);
-    	Vector<Bezeroa> bezeroak = dbManager.getBezeroak(username, bezeroa);
+    	ArrayList<Bezeroa> bezeroak = dbManager.getBezeroak(username, bezeroa);
     	dbManager.close();
     	return bezeroak;
     }
@@ -249,9 +248,9 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod 
-    public Vector<Mezua> getMezuak(Bezeroa bezeroa){
+    public ArrayList<Mezua> getMezuak(Bezeroa bezeroa){
     	dbManager.open(false);
-    	Vector<Mezua> mezuak = dbManager.getMezuak(bezeroa);
+    	ArrayList<Mezua> mezuak = dbManager.getMezuak(bezeroa);
     	dbManager.close();
     	return mezuak;
     }
@@ -288,9 +287,9 @@ public class BLFacadeImplementation  implements BLFacade {
     }
 
 	@WebMethod 
-	public Vector<PronostikoaContainer> getPronostikoak(Apustua a){
+	public ArrayList<PronostikoaContainer> getPronostikoak(Apustua a){
 		dbManager.open(false);
-    	Vector<PronostikoaContainer> emaitza = dbManager.getPronostikoak(a);
+    	ArrayList<PronostikoaContainer> emaitza = dbManager.getPronostikoak(a);
     	dbManager.close();
     	return emaitza;
 	}
@@ -356,9 +355,9 @@ public class BLFacadeImplementation  implements BLFacade {
 	}
 	
 	@WebMethod
-	public Vector<Langilea> getLangileak() {
+	public ArrayList<Langilea> getLangileak() {
 		dbManager.open(false);
-		Vector<Langilea> list = dbManager.getLangileak();
+		ArrayList<Langilea> list = dbManager.getLangileak();
 		dbManager.close();
 		return list;
 	}
