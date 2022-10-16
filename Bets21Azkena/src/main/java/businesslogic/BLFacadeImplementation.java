@@ -217,17 +217,17 @@ public class BLFacadeImplementation  implements BLFacade {
     }
     
     @WebMethod 
-    public Bezeroa getBezeroa(String ErabiltzaileIzena) {
+    public Bezeroa getBezeroa(String erabiltzaileIzena) {
     	dbManager.open(false);
-    	Bezeroa b = dbManager.getBezeroa(ErabiltzaileIzena);
+    	Bezeroa b = dbManager.getBezeroa(erabiltzaileIzena);
     	dbManager.close();
     	return b;
     }
     
     @WebMethod 
-    public Langilea getLangilea(String ErabiltzaileIzena) {
+    public Langilea getLangilea(String erabiltzaileIzena) {
     	dbManager.open(false);
-    	Langilea l = dbManager.getLangilea(ErabiltzaileIzena);
+    	Langilea l = dbManager.getLangilea(erabiltzaileIzena);
     	dbManager.close();
     	return l;
     }
