@@ -53,7 +53,7 @@ public class DataAccess {
 	public DataAccess(boolean initializeMode) {
 
 		System.out.println("Creating DataAccess instance => isDatabaseLocal: " + c.isDatabaseLocal()
-				+ " getDatabBaseOpenMode: " + c.getDataBaseOpenMode());
+		+ " getDatabBaseOpenMode: " + c.getDataBaseOpenMode());
 		open(initializeMode);
 
 	}
@@ -137,10 +137,10 @@ public class DataAccess {
 			}
 
 			Admin a1 = new Admin("Ramon", "Rodriguez", "Soto", "Admin", "aaaaaaaa", "666666666","ramonAdmindb.@gmail.com", UtilDate.newDate(2001,2,12));
-			
+
 			Langilea l1 = new Langilea("Oier", "Elola", "Urkizu", "Elola", "aaaaaaaa", "987654321", "oierurkizu@gmail.com", UtilDate.newDate(2001,7,23));
 			Langilea l2 = new Langilea("Unax", "Lazkanotegi", "Bengoetxea", "UnaxLazka", "aaaaaaaa", "384625395","UnaxLazka@gmail.com", UtilDate.newDate(2001,7,23));
-			
+
 			Bezeroa b1 = new Bezeroa("Tarek", "Chamkhi", "Ermina", "Tarek12301", "aaaaaaaa", "123456789", "Tarek12301@gmail.com",UtilDate.newDate(2001,8,9));
 			Bezeroa b2 = new Bezeroa("Josu", "Loidi", "Gorostidi", "Josulo", "aaaaaaaa", "123456789", "josulo@gmail.com",UtilDate.newDate(2001,8,9));
 			b2.setPublikoa(false);
@@ -152,16 +152,16 @@ public class DataAccess {
 			Bezeroa b8 = new Bezeroa("Karmele", "Loidi", "Gorostidi", "Katuu19", "aaaaaaaa", "123456789", "Katuu19@gmail.com",UtilDate.newDate(2001,8,9));
 			Bezeroa b9 = new Bezeroa("Eneko", "Sagastume", "Ontsalo", "Ontsalo", "aaaaaaaa", "123456789", "Ontsalo@gmail.com",UtilDate.newDate(2001,8,9));
 			Bezeroa b10 = new Bezeroa("Naiara", "Agirre", "Urriza", "Na1ara", "aaaaaaaa", "123456789", "Na1ara@gmail.com",UtilDate.newDate(2001,8,9));
-			
-			
+
+
 			Event event1 = new Event(21,"Eibar-Celta", UtilDate.newDate(2021, 2, 17));
 			Event event2 = new Event(22,"Granada-Athletic", UtilDate.newDate(2021, 2, 17));
-			
+
 			Question ques1 = event1.addQuestion("Zeinek irabaziko du partidua?", 1);
 			Question ques2 = event1.addQuestion("Zeinek sartuko du lehenengo gola?", 1);
 			Question ques3 = event2.addQuestion("Zeinek irabaziko du partidua?", 1);
 			Question ques4 = event2.addQuestion("Golik sartuko al da lehen zatian?", 1);
-			
+
 			Pronostikoa pronos1, pronos2, pronos3, pronos4, pronos5, pronos6, pronos7, pronos8, pronos9, pronos10, pronos11, pronos12, pronos13, pronos14, pronos15, pronos16, pronos17;
 			pronos1 = ques1.addPronostic("1", (double)1.2);
 			pronos2 = ques1.addPronostic("X", (double)1.5);//
@@ -174,7 +174,7 @@ public class DataAccess {
 			pronos9 = ques3.addPronostic("2", (double)1.2);
 			pronos10 = ques4.addPronostic("Bai", (double)1.3);
 			pronos11 = ques4.addPronostic("Ez", (double)2.5);//
-		
+
 			pronos12 = q1.addPronostic("1", (double)1.2);
 			pronos13 = q1.addPronostic("X", (double)1.5);//
 			pronos14 = q1.addPronostic("2", (double)1.8);
@@ -187,39 +187,39 @@ public class DataAccess {
 			pronos15 = q4.addPronostic("<2", (double)1.2);//
 			pronos16 = q4.addPronostic("3", (double)1.6);
 			pronos17 = q4.addPronostic(">3", (double)1.8);
-			
-			
+
+
 			Errepikapena errepikapenBerria = b2.addErrepikatzailea(b5, 2, 10, 0.2);
 			b5.addErrepikatua(errepikapenBerria);
-			
+
 			ArrayList<Pronostikoa> p = new ArrayList<Pronostikoa>();
 			p.add(pronos2);
 			p.add(pronos4);
 			Apustua apustua1 = b2.addApustua(p, 2, null);
 			Apustua apustu2=b5.addApustua(p, 4, b2);
-			
+
 			pronos2.addApustua(apustua1);
 			pronos2.addApustua(apustu2);
 			pronos4.addApustua(apustu2);
 			pronos4.addApustua(apustua1);
-			
+
 			db.persist(apustua1);
 			db.persist(apustu2);
-			
+
 			Mugimendua m1,m2,m3,m4;
 			m1 = b2.addMugimendua("Bankuko diru-sarrera", 52, "bankua", UtilDate.newDate(2021, 2, 15));
 			m2 = b2.addMugimendua("Apustua egin", -2, "jokatu", UtilDate.newDate(2021, 2, 16));
 			m3 = b2.addMugimendua("Bankuko diru-sarrera", 30, "bankua", UtilDate.newDate(2021, 2, 15));
 			m4 = b5.addMugimendua("Apustu errepikatua egin ("+b2+")", -4, "jokatu", UtilDate.newDate(2021, 2, 16));
-			
+
 			db.persist(event1);
 			db.persist(event2);
-			
+
 			db.persist(ques1);
 			db.persist(ques2);
 			db.persist(ques3);
 			db.persist(ques4);
-			
+
 			db.persist(pronos1);
 			db.persist(pronos2);
 			db.persist(pronos3);
@@ -231,7 +231,7 @@ public class DataAccess {
 			db.persist(pronos9);
 			db.persist(pronos10);
 			db.persist(pronos11);
-			
+
 			db.persist(m1);
 			db.persist(m2);
 			db.persist(m3);
@@ -277,7 +277,7 @@ public class DataAccess {
 			db.persist(ev18);
 			db.persist(ev19);
 			db.persist(ev20);
-			
+
 			db.persist(pronos12);
 			db.persist(pronos13);
 			db.persist(pronos14);
@@ -309,15 +309,15 @@ public class DataAccess {
 
 		Event ev = db.find(Event.class, event.getEventNumber());
 
-		if (ev.DoesQuestionExists(question))
+		if (ev.doesQuestionExists(question))
 			throw new QuestionAlreadyExist(ResourceBundle.getBundle("Etiquetas").getString("ErrorQueryAlreadyExist"));
 
 		db.getTransaction().begin();
 		Question q = ev.addQuestion(question, betMinimum);
 		// db.persist(q);
 		db.persist(ev); // db.persist(q) not required when CascadeType.PERSIST is added in questions
-						// property of Event class
-						// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
+		// property of Event class
+		// @OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
 		db.getTransaction().commit();
 		return q;
 
@@ -342,7 +342,7 @@ public class DataAccess {
 		return res;
 	}
 
-	
+
 	/**
 	 * This method retrieves from the database the dates a month for which there are
 	 * events
@@ -372,7 +372,7 @@ public class DataAccess {
 	public void open(boolean initializeMode) {
 
 		System.out.println("Opening DataAccess instance => isDatabaseLocal: " + c.isDatabaseLocal()
-				+ " getDatabBaseOpenMode: " + c.getDataBaseOpenMode());
+		+ " getDatabBaseOpenMode: " + c.getDataBaseOpenMode());
 
 		String fileName = c.getDbFilename();
 		if (initializeMode) {
@@ -399,10 +399,10 @@ public class DataAccess {
 	public boolean existQuestion(Event event, String question) {
 		System.out.println(">> DataAccess: existQuestion=> event= " + event + " question= " + question);
 		Event ev = db.find(Event.class, event.getEventNumber());
-		return ev.DoesQuestionExists(question);
+		return ev.doesQuestionExists(question);
 
 	}
-	
+
 	public Pertsona isLogin(String erabiltzaileIzena, String pasahitza) {
 		TypedQuery<Pertsona> query = db.createQuery("SELECT p FROM Pertsona p WHERE p.erabiltzaileIzena=?1 AND p.pasahitza=?2", Pertsona.class);
 		query.setParameter(1, erabiltzaileIzena);
@@ -414,9 +414,9 @@ public class DataAccess {
 			return pertsona.get(0);
 		}
 	}
-	
+
 	//Bajarle la cantidad de parametros
-	
+
 	public Pertsona register(String izena, String abizena1, String abizena2, String erabiltzaileIzena, String pasahitza, String telefonoZbkia, String emaila, Date jaiotzeData, String mota) throws UserAlreadyExist{
 		TypedQuery<Pertsona> query = db.createQuery("SELECT p FROM Pertsona p WHERE p.erabiltzaileIzena=?1", Pertsona.class);
 		query.setParameter(1, erabiltzaileIzena);
@@ -438,7 +438,7 @@ public class DataAccess {
 			return berria;
 		}
 	}
-	
+
 	public void createEvent(String description, Date eventDate) throws EventAlreadyExist{
 		TypedQuery<Event> query = db.createQuery("SELECT e FROM Event e WHERE e.description=?1 AND e.eventDate=?2", Event.class);
 		query.setParameter(1, description);
@@ -459,7 +459,7 @@ public class DataAccess {
 		db.close();
 		System.out.println("DataBase closed");
 	}
-	
+
 	public ArrayList<Question> getQuestions(Event event) {
 		System.out.println(">> DataAccess: getQuestions");
 		ArrayList<Question> res = new ArrayList<Question>();
@@ -476,8 +476,8 @@ public class DataAccess {
 	public Pronostikoa createPronostic(Question question, String description, double kuota) throws PronosticAlreadyExist {
 
 		Question q = db.find(Question.class, question.getQuestionNumber());
-		
-		if(q.DoesPronosticExists(description))
+
+		if(q.doesPronosticExists(description))
 			throw new PronosticAlreadyExist();
 
 		db.getTransaction().begin();
@@ -487,7 +487,7 @@ public class DataAccess {
 		return p;
 
 	}
-	
+
 	public void emaitzaIpini(Question question, Pronostikoa pronostikoa){
 		Pronostikoa p = db.find(Pronostikoa.class, pronostikoa.getIdentifikadorea());
 		Question q = db.find(Question.class, question.getQuestionNumber());
@@ -516,23 +516,23 @@ public class DataAccess {
 		}	
 		db.getTransaction().commit();
 	}
-	
+
 	public Bezeroa apustuaEgin(List<Pronostikoa> pronostikoak, double a, Bezeroa bezero) {
 		Bezeroa erabiltzaile = db.find(Bezeroa.class, bezero.getErabiltzaileIzena());
 		Pronostikoa pronos;
 		ArrayList<Pronostikoa> pronostikoSorta = new ArrayList<Pronostikoa>();
-		
+
 		for(Pronostikoa p : pronostikoak) {
 			pronos = db.find(Pronostikoa.class, p.getIdentifikadorea());
 			pronostikoSorta.add(pronos);
 		}
-		
+
 		db.getTransaction().begin();
 		Apustua apus = erabiltzaile.addApustua(pronostikoSorta, a, null);
 		for(Pronostikoa p : pronostikoSorta) {
 			p.addApustua(apus);
 		}
-		
+
 		db.persist(apus);
 		jarraitzaileeiApustuaEgin(a, erabiltzaile, pronostikoSorta, apus);
 		erabiltzaile.addMugimendua("Apustua egin ", -a, "jokatu");
@@ -546,13 +546,13 @@ public class DataAccess {
 		for(Errepikapena er: jarraitzaile) {
 			double apustudiru=0;
 			if (er.getHilabeteHonetanGeratzenDena()>0) {
-				
+
 				if (er.getHilabeteHonetanGeratzenDena()>=er.getApustatukoDena()*a) {
 					apustudiru=er.getApustatukoDena()*a;
 				} else {
 					apustudiru=er.getHilabeteHonetanGeratzenDena();
 				}
-				
+
 				if (er.getNork().getDirua() >= apustudiru) {
 					Apustua apustu = er.getNork().addApustua(pronostikoSorta, apustudiru, erabiltzaile);
 					for (Pronostikoa p : pronostikoSorta) {
@@ -565,7 +565,7 @@ public class DataAccess {
 			}
 		}
 	}
-	
+
 	public Bezeroa deleteApustua(Apustua apustua) throws EventFinished{
 		db.getTransaction().begin();
 		Apustua a=db.find(Apustua.class, apustua.getIdentifikadorea());
@@ -605,7 +605,7 @@ public class DataAccess {
 		db.getTransaction().commit();
 		return bezeroa;
 	}
-	
+
 	public Bezeroa diruaSartu(double u, Bezeroa bezeroa) {
 		db.getTransaction().begin();
 		Bezeroa erabiltzaile = db.find(Bezeroa.class, bezeroa.getErabiltzaileIzena());
@@ -614,7 +614,7 @@ public class DataAccess {
 		db.getTransaction().commit();
 		return erabiltzaile;
 	}
-	
+
 	public void ezabatuGertaera(Event event) {
 		Bezeroa bezeroa;
 		int x;
@@ -656,17 +656,17 @@ public class DataAccess {
 		Apustua a = db.find(Apustua.class, 53);
 		System.out.println(a);
 	}
-	
+
 	public Bezeroa getBezeroa(String ErabiltzaileIzena) {
 		Bezeroa erabiltzaile = db.find(Bezeroa.class, ErabiltzaileIzena);
 		return erabiltzaile;
 	}
-	
+
 	public Langilea getLangilea(String ErabiltzaileIzena) {
 		Langilea erabiltzaile = db.find(Langilea.class, ErabiltzaileIzena);
 		return erabiltzaile;
 	}
-	
+
 	public Vector<Bezeroa> getBezeroak(String username, Bezeroa bezeroa){
 		Bezeroa erabiltzaile = db.find(Bezeroa.class, bezeroa.getErabiltzaileIzena());
 		Vector<Bezeroa> res = new Vector<Bezeroa>();
@@ -679,7 +679,7 @@ public class DataAccess {
 		}
 		return res;
 	}
-	
+
 	public BezeroartekoMezua bidaliMezua(Bezeroa nork, Bezeroa nori, String mezua, String gaia, String mota, double zenbatApostatu, double hilabeteanZenbat, double zenbatErrepikatuarentzat) {
 		Bezeroa igorlea = db.find(Bezeroa.class, nork.getErabiltzaileIzena());
 		Bezeroa hartzailea = db.find(Bezeroa.class, nori.getErabiltzaileIzena());
@@ -689,15 +689,15 @@ public class DataAccess {
 		db.persist(mezuBerria);
 		db.getTransaction().commit();
 		return mezuBerria;
-    }
-	
+	}
+
 	public void removePertsona(String erabiltzaileIzena) {
 		Pertsona p1 = db.find(Pertsona.class, erabiltzaileIzena);
 		db.getTransaction().begin();
 		db.remove(p1);
 		db.getTransaction().commit();
 	}
-	
+
 	public void errepikatu(Bezeroa nork, Bezeroa nori, double apustatukoDena, double hilabetekoMax, double komisioa){
 		Bezeroa errepikatzailea = db.find(Bezeroa.class, nork.getErabiltzaileIzena());
 		Bezeroa errepikatua = db.find(Bezeroa.class, nori.getErabiltzaileIzena());
@@ -707,19 +707,19 @@ public class DataAccess {
 		db.persist(errepikapenBerria);
 		db.getTransaction().commit();
 	}
-	
+
 	public Vector<Mezua> getMezuak(Bezeroa bezeroa){
 		Bezeroa erabiltzailea = db.find(Bezeroa.class, bezeroa.getErabiltzaileIzena());
 		return erabiltzailea.getMezuak();
 	}
-	
+
 	public void mezuaIrakurri(Mezua mezua) {
 		Mezua m = db.find(Mezua.class, mezua.getIdentifikadorea());
 		db.getTransaction().begin();
 		m.setIrakurrita(true);
 		db.getTransaction().commit();
 	}
-	
+
 	public boolean removeMezua(Mezua mezua) {
 		if(mezua instanceof BezeroartekoMezua) {
 			BezeroartekoMezua m = db.find(BezeroartekoMezua.class, mezua.getIdentifikadorea());
@@ -749,8 +749,8 @@ public class DataAccess {
 
 		}
 		return true;
-    }
-	
+	}
+
 	public Bezeroa eguneratuEzarpenak(Bezeroa b, double komisioa, boolean publikoa) {
 		Bezeroa erabiltzailea = db.find(Bezeroa.class, b.getErabiltzaileIzena());
 		db.getTransaction().begin();
@@ -758,7 +758,7 @@ public class DataAccess {
 		db.getTransaction().commit();
 		return erabiltzailea;
 	}
-	
+
 	public Vector<PronostikoaContainer> getPronostikoak(Apustua a){
 		Apustua ap = db.find(Apustua.class, a.getIdentifikadorea());
 		ArrayList<Pronostikoa> pronostikoak = ap.getPronostikoak();
@@ -768,7 +768,7 @@ public class DataAccess {
 		}
 		return emaitza;
 	}
-	
+
 	public ArretaElkarrizketa arretaElkarrizketaSortu(Bezeroa bezeroa, String gaia, String mezua) {
 		Bezeroa erabiltzailea = db.find(Bezeroa.class, bezeroa.getErabiltzaileIzena());
 		db.getTransaction().begin();
@@ -778,7 +778,7 @@ public class DataAccess {
 		db.getTransaction().commit();
 		return elkarrizketa;
 	}
-	
+
 	public ArretaElkarrizketa arretaMezuaBidali(ArretaElkarrizketa elkarrizketa, String mezua, boolean langileari) {
 		ArretaElkarrizketa elkar = db.find(ArretaElkarrizketa.class, elkarrizketa.getIdentifikadorea());
 		db.getTransaction().begin();
@@ -786,7 +786,7 @@ public class DataAccess {
 		db.getTransaction().commit();
 		return elkar;
 	}
-	
+
 	public ArretaElkarrizketa bezeroaEsleitu(Langilea langilea) {
 		TypedQuery<ArretaElkarrizketa> query = db.createQuery("SELECT ae FROM ArretaElkarrizketa ae WHERE ae.langilea IS NULL AND ae.amaituta=false", ArretaElkarrizketa.class);
 		List<ArretaElkarrizketa> elkarrizketak = query.getResultList();
@@ -795,25 +795,25 @@ public class DataAccess {
 		}
 		Langilea l = db.find(Langilea.class, langilea.getErabiltzaileIzena());
 		db.getTransaction().begin();
-	    ArretaElkarrizketa elkarrizketa = elkarrizketak.get(0);
-	    elkarrizketa.setLangilea(l);
+		ArretaElkarrizketa elkarrizketa = elkarrizketak.get(0);
+		elkarrizketa.setLangilea(l);
 		l.addElkarrizketa(elkarrizketa);
 		db.getTransaction().commit();
 		return elkarrizketa;
 	}
-	
+
 	public BezeroaContainer getBezeroaContainer(Bezeroa b){
 		Bezeroa bezeroa = db.find(Bezeroa.class, b.getErabiltzaileIzena());
 		return new BezeroaContainer(bezeroa);
 	}
-	
+
 	public void geldituElkarrizketa(ArretaElkarrizketa ae) {
 		ArretaElkarrizketa elkar = db.find(ArretaElkarrizketa.class, ae.getIdentifikadorea());
 		db.getTransaction().begin();
 		elkar.gelditu();
 		db.getTransaction().commit();
 	}
-	
+
 	public void amaituElkarrizketa(ArretaElkarrizketa ae) {
 		ArretaElkarrizketa elkar = db.find(ArretaElkarrizketa.class, ae.getIdentifikadorea());
 		db.getTransaction().begin();
@@ -833,7 +833,7 @@ public class DataAccess {
 		elkar.setAmaituta(true);
 		db.getTransaction().commit();
 	}
-	
+
 	public void gehituPuntuazioa(ArretaElkarrizketa l, Integer x) {
 		ArretaElkarrizketa arretaElkarrizketa = db.find(ArretaElkarrizketa.class, l.getIdentifikadorea());
 		Langilea langilea = arretaElkarrizketa.getLangilea();
@@ -841,17 +841,17 @@ public class DataAccess {
 		langilea.addBalorazioa(x);
 		db.getTransaction().commit();
 	}
-	
+
 	public void eguneratuErrepikapenak() {
 		TypedQuery<Errepikapena> query = db.createQuery("SELECT e FROM Errepikapena e", Errepikapena.class);
 		List<Errepikapena> lista=query.getResultList();
 		db.getTransaction().begin();
 		for (Errepikapena i: lista) {
-				i.setHilHonetanGeratzenDena(i.getHilabetekoMax());
+			i.setHilHonetanGeratzenDena(i.getHilabetekoMax());
 		}
 		db.getTransaction().commit();
 	}
-	
+
 	public Vector<Langilea> getLangileak() {
 		Vector<Langilea> langileak = new Vector<Langilea>();
 		TypedQuery<Langilea> query = db.createQuery("SELECT l FROM Langilea l", Langilea.class);
@@ -861,7 +861,7 @@ public class DataAccess {
 		}
 		return langileak;
 	}
-	
+
 	public ArrayList<ErrepikatuakContainer> getErrepikatzaileak(Bezeroa bezeroa) {
 		ArrayList<ErrepikatuakContainer> emaitza = new ArrayList<ErrepikatuakContainer>();
 		Bezeroa erabiltzailea = db.find(Bezeroa.class, bezeroa.getErabiltzaileIzena());
@@ -898,7 +898,7 @@ public class DataAccess {
 		db.remove(e);
 		db.getTransaction().commit();
 	}
-	
+
 	public ArretaElkarrizketa getArretaElkarrizketa(Integer id) {
 		ArretaElkarrizketa emaitza = db.find(ArretaElkarrizketa.class, id);
 		return emaitza;

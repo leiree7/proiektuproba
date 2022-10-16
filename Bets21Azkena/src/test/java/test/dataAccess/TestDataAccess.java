@@ -96,7 +96,7 @@ public class TestDataAccess {
 			System.out.println(">> DataAccessTest: existQuestion");
 			Event e = db.find(Event.class, ev.getEventNumber());
 			if (e!=null) {
-				return e.DoesQuestionExists(q.getQuestion());
+				return e.doesQuestionExists(q.getQuestion());
 			} else 
 			return false;
 			

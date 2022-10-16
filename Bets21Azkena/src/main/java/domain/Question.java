@@ -173,7 +173,7 @@ public class Question implements Serializable {
 		return pronostikoak;
 	}
 
-	public boolean DoesPronosticExists(String deskripzioa)  {	
+	public boolean doesPronosticExists(String deskripzioa)  {	
 		for (Pronostikoa p:this.getPronostics()){
 			if (p.getDeskripzioa().compareTo(deskripzioa)==0)
 				return true;
