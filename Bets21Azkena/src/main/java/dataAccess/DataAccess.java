@@ -45,6 +45,11 @@ import exceptions.UserAlreadyExist;
  * It implements the data access to the objectDb database
  */
 public class DataAccess {
+	private static final String BUELTATU = "bueltatu";
+	private static final String AAAAAAAA = "aaaaaaaa";
+	private static final String IRABAZI = "irabazi";
+	private static final String JOKATU = "jokatu";
+	private static final String BANKUA = "bankua";
 	protected static EntityManager db;
 	protected static EntityManagerFactory emf;
 
@@ -112,54 +117,60 @@ public class DataAccess {
 			Question q4;
 			Question q5;
 			Question q6;
-
+			String qgep = "¿Quién ganará el partido?";
+			String zidp = "Zeinek irabaziko du partidua?";
+			String wwwtm = "Who will win the match?";
 			if (Locale.getDefault().equals(new Locale("es"))) {
-				q1 = ev1.addQuestion("¿Quién ganará el partido?", 1);
+				q1 = ev1.addQuestion(qgep, 1);
 				q2 = ev1.addQuestion("¿Quién meterá el primer gol?", 2);
-				q3 = ev11.addQuestion("¿Quién ganará el partido?", 1);
+				q3 = ev11.addQuestion(qgep, 1);
 				q4 = ev11.addQuestion("¿Cuántos goles se marcarán?", 2);
-				q5 = ev17.addQuestion("¿Quién ganará el partido?", 1);
+				q5 = ev17.addQuestion(qgep, 1);
 				q6 = ev17.addQuestion("¿Habrá goles en la primera parte?", 2);
 			} else if (Locale.getDefault().equals(new Locale("en"))) {
-				q1 = ev1.addQuestion("Who will win the match?", 1);
+				q1 = ev1.addQuestion(wwwtm, 1);
 				q2 = ev1.addQuestion("Who will score first?", 2);
-				q3 = ev11.addQuestion("Who will win the match?", 1);
+				q3 = ev11.addQuestion(wwwtm, 1);
 				q4 = ev11.addQuestion("How many goals will be scored in the match?", 2);
-				q5 = ev17.addQuestion("Who will win the match?", 1);
+				q5 = ev17.addQuestion(wwwtm, 1);
 				q6 = ev17.addQuestion("Will there be goals in the first half?", 2);
 			} else {
-				q1 = ev1.addQuestion("Zeinek irabaziko du partidua?", 1);
+				q1 = ev1.addQuestion(zidp, 1);
 				q2 = ev1.addQuestion("Zeinek sartuko du lehenengo gola?", 2);
-				q3 = ev11.addQuestion("Zeinek irabaziko du partidua?", 1);
+				q3 = ev11.addQuestion(zidp, 1);
 				q4 = ev11.addQuestion("Zenbat gol sartuko dira?", 2);
-				q5 = ev17.addQuestion("Zeinek irabaziko du partidua?", 1);
+				q5 = ev17.addQuestion(zidp, 1);
 				q6 = ev17.addQuestion("Golak sartuko dira lehenengo zatian?", 2);
 			}
 
-			Admin a1 = new Admin("Ramon", "Rodriguez", "Soto", "Admin", "aaaaaaaa", "666666666","ramonAdmindb.@gmail.com", UtilDate.newDate(2001,2,12));
 
-			Langilea l1 = new Langilea("Oier", "Elola", "Urkizu", "Elola", "aaaaaaaa", "987654321", "oierurkizu@gmail.com", UtilDate.newDate(2001,7,23));
-			Langilea l2 = new Langilea("Unax", "Lazkanotegi", "Bengoetxea", "UnaxLazka", "aaaaaaaa", "384625395","UnaxLazka@gmail.com", UtilDate.newDate(2001,7,23));
+			Admin a1 = new Admin("Ramon", "Rodriguez", "Soto", "Admin", AAAAAAAA, "666666666","ramonAdmindb.@gmail.com", UtilDate.newDate(2001,2,12));
+			
+			Langilea l1 = new Langilea("Oier", "Elola", "Urkizu", "Elola", AAAAAAAA, "987654321", "oierurkizu@gmail.com", UtilDate.newDate(2001,7,23));
+			Langilea l2 = new Langilea("Unax", "Lazkanotegi", "Bengoetxea", "UnaxLazka", AAAAAAAA, "384625395","UnaxLazka@gmail.com", UtilDate.newDate(2001,7,23));
+			
+			Bezeroa b1 = new Bezeroa("Tarek", "Chamkhi", "Ermina", "Tarek12301", AAAAAAAA, "123456789", "Tarek12301@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b2 = new Bezeroa("Josu", "Loidi", "Gorostidi", "Josulo", AAAAAAAA, "123456789", "josulo@gmail.com",UtilDate.newDate(2001,8,9));
 
-			Bezeroa b1 = new Bezeroa("Tarek", "Chamkhi", "Ermina", "Tarek12301", "aaaaaaaa", "123456789", "Tarek12301@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b2 = new Bezeroa("Josu", "Loidi", "Gorostidi", "Josulo", "aaaaaaaa", "123456789", "josulo@gmail.com",UtilDate.newDate(2001,8,9));
 			b2.setPublikoa(false);
-			Bezeroa b3 = new Bezeroa("Jose", "Garc�a", "Perez", "JoseRamon", "aaaaaaaa", "123456789", "JoseRamon@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b4 = new Bezeroa("Josu", "Perez", "Galdos", "Josueeee", "aaaaaaaa", "123456789", "Josueeee@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b3 = new Bezeroa("Jose", "Garc�a", "Perez", "JoseRamon", AAAAAAAA, "123456789", "JoseRamon@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b4 = new Bezeroa("Josu", "Perez", "Galdos", "Josueeee", AAAAAAAA, "123456789", "Josueeee@gmail.com",UtilDate.newDate(2001,8,9));
 			Bezeroa b5 = new Bezeroa("Saioa", "Goikoetxea", "Ugarte", "Saioo99", "b", "123456789", "Saioo99@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b6 = new Bezeroa("Mikel", "Artola", "Peraz", "Gamer75", "aaaaaaaa", "123456789", "Gamer75@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b7 = new Bezeroa("Pello", "Garcia", "Lorca", "PelloJoxepe", "aaaaaaaa", "123456789", "PelloJoxepe@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b8 = new Bezeroa("Karmele", "Loidi", "Gorostidi", "Katuu19", "aaaaaaaa", "123456789", "Katuu19@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b9 = new Bezeroa("Eneko", "Sagastume", "Ontsalo", "Ontsalo", "aaaaaaaa", "123456789", "Ontsalo@gmail.com",UtilDate.newDate(2001,8,9));
-			Bezeroa b10 = new Bezeroa("Naiara", "Agirre", "Urriza", "Na1ara", "aaaaaaaa", "123456789", "Na1ara@gmail.com",UtilDate.newDate(2001,8,9));
 
 
+			Bezeroa b6 = new Bezeroa("Mikel", "Artola", "Peraz", "Gamer75", AAAAAAAA, "123456789", "Gamer75@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b7 = new Bezeroa("Pello", "Garcia", "Lorca", "PelloJoxepe", AAAAAAAA, "123456789", "PelloJoxepe@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b8 = new Bezeroa("Karmele", "Loidi", "Gorostidi", "Katuu19", AAAAAAAA, "123456789", "Katuu19@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b9 = new Bezeroa("Eneko", "Sagastume", "Ontsalo", "Ontsalo", AAAAAAAA, "123456789", "Ontsalo@gmail.com",UtilDate.newDate(2001,8,9));
+			Bezeroa b10 = new Bezeroa("Naiara", "Agirre", "Urriza", "Na1ara", AAAAAAAA, "123456789", "Na1ara@gmail.com",UtilDate.newDate(2001,8,9));
+			
+			
 			Event event1 = new Event(21,"Eibar-Celta", UtilDate.newDate(2021, 2, 17));
 			Event event2 = new Event(22,"Granada-Athletic", UtilDate.newDate(2021, 2, 17));
-
-			Question ques1 = event1.addQuestion("Zeinek irabaziko du partidua?", 1);
+			
+			Question ques1 = event1.addQuestion(zidp, 1);
 			Question ques2 = event1.addQuestion("Zeinek sartuko du lehenengo gola?", 1);
-			Question ques3 = event2.addQuestion("Zeinek irabaziko du partidua?", 1);
+			Question ques3 = event2.addQuestion(zidp, 1);
 			Question ques4 = event2.addQuestion("Golik sartuko al da lehen zatian?", 1);
 
 			Pronostikoa pronos1, pronos2, pronos3, pronos4, pronos5, pronos6, pronos7, pronos8, pronos9, pronos10, pronos11, pronos12, pronos13, pronos14, pronos15, pronos16, pronos17;
@@ -207,11 +218,18 @@ public class DataAccess {
 			db.persist(apustu2);
 
 			Mugimendua m1,m2,m3,m4;
+
 			m1 = b2.addMugimendua("Bankuko diru-sarrera", 52, "bankua", UtilDate.newDate(2021, 2, 15));
 			m2 = b2.addMugimendua("Apustua egin", -2, "jokatu", UtilDate.newDate(2021, 2, 16));
 			m3 = b2.addMugimendua("Bankuko diru-sarrera", 30, "bankua", UtilDate.newDate(2021, 2, 15));
 			m4 = b5.addMugimendua("Apustu errepikatua egin ("+b2+")", -4, "jokatu", UtilDate.newDate(2021, 2, 16));
 
+
+			m1 = b2.addMugimendua("Bankuko diru-sarrera", 52, BANKUA, UtilDate.newDate(2021, 2, 15));
+			m2 = b2.addMugimendua("Apustua egin", -2, JOKATU, UtilDate.newDate(2021, 2, 16));
+			m3 = b2.addMugimendua("Bankuko diru-sarrera", 30, BANKUA, UtilDate.newDate(2021, 2, 15));
+			m4 = b5.addMugimendua("Apustu errepikatua egin ("+b2+")", -4, JOKATU, UtilDate.newDate(2021, 2, 16));
+			
 			db.persist(event1);
 			db.persist(event2);
 
@@ -417,20 +435,21 @@ public class DataAccess {
 
 	//Bajarle la cantidad de parametros
 
-	public Pertsona register(String izena, String abizena1, String abizena2, String erabiltzaileIzena, String pasahitza, String telefonoZbkia, String emaila, Date jaiotzeData, String mota) throws UserAlreadyExist{
+	
+	public Pertsona register(Pertsona per, String mota) throws UserAlreadyExist{
 		TypedQuery<Pertsona> query = db.createQuery("SELECT p FROM Pertsona p WHERE p.erabiltzaileIzena=?1", Pertsona.class);
-		query.setParameter(1, erabiltzaileIzena);
+		query.setParameter(1, per.erabiltzaileIzena);
 		List<Pertsona> pertsona = query.getResultList();
 		if(!pertsona.isEmpty()) {
 			throw new UserAlreadyExist();
 		}else {
 			Pertsona berria = null;
 			if(mota.equals("admin")) {
-				berria = new Admin(izena, abizena1, abizena2, erabiltzaileIzena, pasahitza, telefonoZbkia, emaila, jaiotzeData);
+				berria = new Admin(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
 			}else if (mota.equals("langilea")) {
-				berria = new Langilea(izena, abizena1, abizena2, erabiltzaileIzena, pasahitza, telefonoZbkia, emaila, jaiotzeData);
+				berria = new Langilea(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
 			}else if (mota.equals("bezeroa")) {
-				berria = new Bezeroa(izena, abizena1, abizena2, erabiltzaileIzena, pasahitza, telefonoZbkia, emaila, jaiotzeData);
+				berria = new Bezeroa(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
 			}
 			db.getTransaction().begin();
 			db.persist(berria);
@@ -507,11 +526,11 @@ public class DataAccess {
 					bezeroa = a.getBezeroa();
 					Errepikapena errepikapen=bezeroa.getErrepikapena(bez);
 					komisioa=(a.getKopurua()*a.getKuotaTotala()-a.getKopurua())*errepikapen.getKomisioa();
-					bez.addMugimendua("Apustu errepikatuaren komisioa ("+bezeroa+")", komisioa,"irabazi");
+					bez.addMugimendua("Apustu errepikatuaren komisioa ("+bezeroa+")", komisioa,IRABAZI);
 				}
 				bezeroa=a.getBezeroa();
 				irabazia=a.getKopurua()*a.getKuotaTotala()-komisioa;
-				bezeroa.addMugimendua("Apustua irabazi ("+a.getIdentifikadorea()+")", irabazia, "irabazi");
+				bezeroa.addMugimendua("Apustua irabazi ("+a.getIdentifikadorea()+")", irabazia, IRABAZI);
 			}
 		}	
 		db.getTransaction().commit();
@@ -535,7 +554,7 @@ public class DataAccess {
 
 		db.persist(apus);
 		jarraitzaileeiApustuaEgin(a, erabiltzaile, pronostikoSorta, apus);
-		erabiltzaile.addMugimendua("Apustua egin ", -a, "jokatu");
+		erabiltzaile.addMugimendua("Apustua egin ", -a, JOKATU);
 		db.getTransaction().commit();
 		return erabiltzaile;
 	}
@@ -558,7 +577,7 @@ public class DataAccess {
 					for (Pronostikoa p : pronostikoSorta) {
 						p.addApustua(apustu);
 					}
-					er.getNork().addMugimendua("Apustu errepikatua egin ("+erabiltzaile+")", -apustudiru, "jokatu");
+					er.getNork().addMugimendua("Apustu errepikatua egin ("+erabiltzaile+")", -apustudiru, JOKATU);
 					er.eguneratuHilHonetanGeratzenDena(-apustudiru);
 					db.persist(apus);
 				}
@@ -583,7 +602,7 @@ public class DataAccess {
 			Errepikapena errepikapen=bezeroa.getErrepikapena(a.getErrepikatua());
 			errepikapen.eguneratuHilHonetanGeratzenDena(a.getKopurua());
 		}
-		bezeroa.addMugimendua("Apustua ezabatu ("+a.getIdentifikadorea()+")",a.getKopurua(),"bueltatu");
+		bezeroa.addMugimendua("Apustua ezabatu ("+a.getIdentifikadorea()+")",a.getKopurua(),BUELTATU);
 		for(Pronostikoa p : pronostikoak) {
 			p.removeApustua(a);
 		}
@@ -593,7 +612,7 @@ public class DataAccess {
 			Apustua apusErr = bez.baduApustua(a);
 			if(apusErr!=null) {
 				bez.removeApustua(apusErr);
-				bez.addMugimendua("Apustu errepikatua ezabatu ("+bezeroa+")", apusErr.getKopurua(), "bueltatu");
+				bez.addMugimendua("Apustu errepikatua ezabatu ("+bezeroa+")", apusErr.getKopurua(), BUELTATU);
 				for (Pronostikoa p: apusErr.getPronostikoak()) {
 					p.removeApustua(apusErr);
 				}
@@ -609,14 +628,14 @@ public class DataAccess {
 	public Bezeroa diruaSartu(double u, Bezeroa bezeroa) {
 		db.getTransaction().begin();
 		Bezeroa erabiltzaile = db.find(Bezeroa.class, bezeroa.getErabiltzaileIzena());
-		erabiltzaile.addMugimendua("Bankuko diru-sarrera", u, "bankua");
+		erabiltzaile.addMugimendua("Bankuko diru-sarrera", u, BANKUA);
 		db.persist(erabiltzaile);
 		db.getTransaction().commit();
 		return erabiltzaile;
 	}
 
 	public void ezabatuGertaera(Event event) {
-		Bezeroa bezeroa;
+
 		int x;
 		Event e = db.find(Event.class, event.getEventNumber());
 		db.getTransaction().begin();
@@ -624,29 +643,7 @@ public class DataAccess {
 			for (Pronostikoa pronostic : question.getPronostics()) {
 				for (Apustua bet : pronostic.getApustuak()) {
 					x = bet.removePronostikoa(pronostic);
-					if(x==0) {
-						bezeroa=bet.getBezeroa();
-						if (bet.getErrepikatua()!=null) {
-							Bezeroa erre=bet.getErrepikatua();
-							Errepikapena er=bezeroa.getErrepikapena(erre);
-							er.eguneratuHilHonetanGeratzenDena(bet.getKopurua());
-						}
-						bezeroa.addMugimendua("Apustuaren dirua itzuli ("+bet.getIdentifikadorea()+")", bet.getKopurua(),"bueltatu");
-						bezeroa.removeApustua(bet);
-						db.remove(bet);
-					}else if(bet.getAsmatutakoKop()==bet.getPronostikoKop()) {
-						double komisioa = 0;
-						if (bet.getErrepikatua()!=null) {
-							Bezeroa bez = bet.getErrepikatua();
-							bezeroa = bet.getBezeroa();
-							Errepikapena errepikapen=bezeroa.getErrepikapena(bez);
-							komisioa=(bet.getKopurua()*bet.getKuotaTotala()-bet.getKopurua())*errepikapen.getKomisioa();
-							bez.addMugimendua("Apustu errepikatuaren komisioa ("+bezeroa+")", komisioa,"irabazi");
-						}
-						bezeroa=bet.getBezeroa();
-						double irabazia=bet.getKopurua()*bet.getKuotaTotala()-komisioa;
-						bezeroa.addMugimendua("Apustua irabazi ("+bet.getIdentifikadorea()+")", irabazia, "irabazi");
-					}
+					ezabatuApustuakBezeroei(x, bet);
 					System.out.println(bet.getPronostikoak()+"  berrize");
 				}
 			}
@@ -655,6 +652,33 @@ public class DataAccess {
 		db.getTransaction().commit();
 		Apustua a = db.find(Apustua.class, 53);
 		System.out.println(a);
+	}
+
+	private void ezabatuApustuakBezeroei(int x, Apustua bet) {
+		Bezeroa bezeroa;
+		if(x==0) {
+			bezeroa=bet.getBezeroa();
+			if (bet.getErrepikatua()!=null) {
+				Bezeroa erre=bet.getErrepikatua();
+				Errepikapena er=bezeroa.getErrepikapena(erre);
+				er.eguneratuHilHonetanGeratzenDena(bet.getKopurua());
+			}
+			bezeroa.addMugimendua("Apustuaren dirua itzuli ("+bet.getIdentifikadorea()+")", bet.getKopurua(),BUELTATU);
+			bezeroa.removeApustua(bet);
+			db.remove(bet);
+		}else if(bet.getAsmatutakoKop()==bet.getPronostikoKop()) {
+			double komisioa = 0;
+			if (bet.getErrepikatua()!=null) {
+				Bezeroa bez = bet.getErrepikatua();
+				bezeroa = bet.getBezeroa();
+				Errepikapena errepikapen=bezeroa.getErrepikapena(bez);
+				komisioa=(bet.getKopurua()*bet.getKuotaTotala()-bet.getKopurua())*errepikapen.getKomisioa();
+				bez.addMugimendua("Apustu errepikatuaren komisioa ("+bezeroa+")", komisioa,IRABAZI);
+			}
+			bezeroa=bet.getBezeroa();
+			double irabazia=bet.getKopurua()*bet.getKuotaTotala()-komisioa;
+			bezeroa.addMugimendua("Apustua irabazi ("+bet.getIdentifikadorea()+")", irabazia, IRABAZI);
+		}
 	}
 
 	public Bezeroa getBezeroa(String ErabiltzaileIzena) {
