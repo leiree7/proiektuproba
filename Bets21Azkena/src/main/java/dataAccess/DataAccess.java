@@ -421,7 +421,6 @@ public class DataAccess {
 		}
 	}
 
-	//Bajarle la cantidad de parametros
 
 	
 	public Pertsona register(Pertsona per, String mota) throws UserAlreadyExist{
