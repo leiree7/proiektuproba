@@ -8,6 +8,7 @@ import javax.swing.border.EmptyBorder;
 
 import businesslogic.BLFacade;
 import domain.Bezeroa;
+import domain.BezeroartekoMezua;
 
 import javax.swing.JTextField;
 import javax.swing.JLabel;
@@ -286,10 +287,12 @@ public class ErrepikatzekoEskaeraEginGUI extends JFrame {
 					BLFacade facade = MainGUI.getBusinessLogic();
 					if(selectedBezeroa.getKomisioAutomatikoa()==-1) {
 						String mezuarenTestua = mezua.getText();
-						bezeroa=facade.bidaliMezua(bezeroa, selectedBezeroa, mezuarenTestua, ResourceBundle.getBundle("Etiquetas").getString("RepeatRequest"), "eskaera", apostatukoDena, apustuaHilabetean, -1);
+						BezeroartekoMezua bamez1 = new BezeroartekoMezua( mezuarenTestua, ResourceBundle.getBundle("Etiquetas").getString("RepeatRequest"), "eskaera", apostatukoDena, apustuaHilabetean, -1, bezeroa, selectedBezeroa);
+						bezeroa=facade.bidaliMezua(bezeroa, selectedBezeroa, bamez1);
 					}else {
 						String mezuOsoa = ResourceBundle.getBundle("Etiquetas").getString("IAccept")+selectedBezeroa.getKomisioAutomatikoa()*100+" "+ResourceBundle.getBundle("Etiquetas").getString("IAccept2");
-						facade.bidaliMezua(selectedBezeroa, bezeroa, mezuOsoa, ResourceBundle.getBundle("Etiquetas").getString("Acceptance"), "errepikatuak eskaera onartu", apostatukoDena, apustuaHilabetean, selectedBezeroa.getKomisioAutomatikoa());
+						BezeroartekoMezua bamez2 = new BezeroartekoMezua( mezuOsoa, ResourceBundle.getBundle("Etiquetas").getString("Acceptance"), "errepikatuak eskaera onartu", apostatukoDena, apustuaHilabetean, selectedBezeroa.getKomisioAutomatikoa(), selectedBezeroa, bezeroa);
+						facade.bidaliMezua(selectedBezeroa, bezeroa, bamez2);
 					}
 					success.setText(ResourceBundle.getBundle("Etiquetas").getString("RequestSent"));
 					bezeroakModel.removeElement(selectedBezeroa);

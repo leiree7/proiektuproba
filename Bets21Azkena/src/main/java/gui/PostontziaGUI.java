@@ -267,7 +267,8 @@ public class PostontziaGUI extends JFrame {
 							if(onura>=0 && onura < 1) {
 								BLFacade facade = MainGUI.getBusinessLogic();
 								String mezuOsoa = ResourceBundle.getBundle("Etiquetas").getString("IAccept")+onura*100+" "+ResourceBundle.getBundle("Etiquetas").getString("IAccept2");
-								bezeroa=facade.bidaliMezua(bezeroa, selectedBezeroartekoMezua.getIgorlea(), mezuOsoa, ResourceBundle.getBundle("Etiquetas").getString("Acceptance"), "errepikatuak eskaera onartu", selectedBezeroartekoMezua.getZenbatApostatu(), selectedBezeroartekoMezua.getHilabeteanZenbat(), onura);
+								BezeroartekoMezua bamez1 = new BezeroartekoMezua(mezuOsoa, ResourceBundle.getBundle("Etiquetas").getString("Acceptance"), "errepikatuak eskaera onartu", selectedBezeroartekoMezua.getZenbatApostatu(), selectedBezeroartekoMezua.getHilabeteanZenbat(), onura, bezeroa, selectedBezeroartekoMezua.getIgorlea());
+								bezeroa=facade.bidaliMezua(bezeroa, selectedBezeroartekoMezua.getIgorlea(), bamez1);
 								bidalia.setVisible(true);
 								send.setVisible(false);
 								send.setEnabled(false);
@@ -285,7 +286,8 @@ public class PostontziaGUI extends JFrame {
 						}else {
 							BLFacade facade = MainGUI.getBusinessLogic();
 							String mezuOsoa = ResourceBundle.getBundle("Etiquetas").getString("NoAcceptRequest")+" "+emaitza.getText();
-							bezeroa=facade.bidaliMezua(bezeroa, selectedBezeroartekoMezua.getIgorlea(), mezuOsoa, ResourceBundle.getBundle("Etiquetas").getString("Denial"), "errepikatuak eskaera ukatu", -1, -1, -1);
+							BezeroartekoMezua bamez2 = new BezeroartekoMezua(mezuOsoa, ResourceBundle.getBundle("Etiquetas").getString("Denial"), "errepikatuak eskaera ukatu", -1, -1, -1, bezeroa, selectedBezeroartekoMezua.getIgorlea());
+							bezeroa=facade.bidaliMezua(bezeroa, selectedBezeroartekoMezua.getIgorlea(), bamez2);
 							tableModelMezuak.setValueAt(ResourceBundle.getBundle("Etiquetas").getString("Answered"), selectedRowInd, 3);
 							selectedBezeroartekoMezua.setIrakurrita(true);
 							facade.mezuaIrakurri(selectedBezeroartekoMezua);
@@ -293,7 +295,8 @@ public class PostontziaGUI extends JFrame {
 					}else if (mota.equals("errepikatuak eskaera onartu")) {
 						if(bai.isSelected()) {
 							BLFacade facade = MainGUI.getBusinessLogic();
-							bezeroa=facade.bidaliMezua(bezeroa, selectedBezeroartekoMezua.getIgorlea(), ResourceBundle.getBundle("Etiquetas").getString("StartRepeat"), ResourceBundle.getBundle("Etiquetas").getString("StartRepeating"), "errepikatzen hasi", selectedBezeroartekoMezua.getZenbatApostatu(), selectedBezeroartekoMezua.getHilabeteanZenbat(), selectedBezeroartekoMezua.getZenbatErrepikatuarentzat());
+							BezeroartekoMezua bamez3 = new BezeroartekoMezua(ResourceBundle.getBundle("Etiquetas").getString("StartRepeat"), ResourceBundle.getBundle("Etiquetas").getString("StartRepeating"), "errepikatzen hasi", selectedBezeroartekoMezua.getZenbatApostatu(), selectedBezeroartekoMezua.getHilabeteanZenbat(), selectedBezeroartekoMezua.getZenbatErrepikatuarentzat(), bezeroa, selectedBezeroartekoMezua.getIgorlea());
+							bezeroa=facade.bidaliMezua(bezeroa, selectedBezeroartekoMezua.getIgorlea(), bamez3);
 							tableModelMezuak.setValueAt(ResourceBundle.getBundle("Etiquetas").getString("Answered"), selectedRowInd, 3);
 							selectedBezeroartekoMezua.setIrakurrita(true);
 							facade.mezuaIrakurri(selectedBezeroartekoMezua);
@@ -301,7 +304,8 @@ public class PostontziaGUI extends JFrame {
 						}else {
 							BLFacade facade = MainGUI.getBusinessLogic();
 							if(selectedBezeroartekoMezua.getIgorlea().getKomisioAutomatikoa()==-1) {
-								facade.bidaliMezua(bezeroa, selectedBezeroartekoMezua.getIgorlea(), ResourceBundle.getBundle("Etiquetas").getString("IsNoAgreement"), ResourceBundle.getBundle("Etiquetas").getString("NoAgreement"), "akordiorik ez", -1, -1, -1);	
+								BezeroartekoMezua bamez4 = new BezeroartekoMezua(ResourceBundle.getBundle("Etiquetas").getString("IsNoAgreement"), ResourceBundle.getBundle("Etiquetas").getString("NoAgreement"), "akordiorik ez", -1, -1, -1, bezeroa, selectedBezeroartekoMezua.getIgorlea());	
+								facade.bidaliMezua(bezeroa, selectedBezeroartekoMezua.getIgorlea(), bamez4);
 							}
 							tableModelMezuak.setValueAt(ResourceBundle.getBundle("Etiquetas").getString("Answered"), selectedRowInd, 3);
 							selectedBezeroartekoMezua.setIrakurrita(true);
