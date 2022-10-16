@@ -138,7 +138,7 @@ public class ArretaElkarrizketa implements Serializable{
 	}
 	
 	public boolean mezurikEz() {
-		return langileakBidalitakoak.size()==0 && bezeroakBidalitakoak.size()==0;
+		return langileakBidalitakoak.isEmpty() && bezeroakBidalitakoak.isEmpty();
 	}
 	
 	public void removeLangilearenMezua(ArretaMezua m) {

@@ -42,10 +42,10 @@ public class Bezeroa extends Pertsona implements Serializable{
 	private Vector<BezeroartekoMezua> jasotakoBezeroMezuak=new Vector<BezeroartekoMezua>();
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-	private Vector<Errepikapena> errepikatzaileak=new Vector<Errepikapena>();
+	private ArrayList<Errepikapena> errepikatzaileak=new ArrayList<Errepikapena>();
 	
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
-	private Vector<Errepikapena> errepikatuak=new Vector<Errepikapena>();
+	private ArrayList<Errepikapena> errepikatuak=new ArrayList<Errepikapena>();
 	
 	@XmlIDREF
 	@OneToMany(fetch=FetchType.EAGER, cascade=CascadeType.PERSIST)
@@ -246,11 +246,11 @@ public class Bezeroa extends Pertsona implements Serializable{
 		this.errepikatuak.add(e);
 	}
 
-	public Vector<Errepikapena> getErrepikatzaileak() {
+	public ArrayList<Errepikapena> getErrepikatzaileak() {
 		return errepikatzaileak;
 	}
 
-	public Vector<Errepikapena> getErrepikatuak() {
+	public ArrayList<Errepikapena> getErrepikatuak() {
 		return errepikatuak;
 	}
 	
@@ -290,8 +290,8 @@ public class Bezeroa extends Pertsona implements Serializable{
 		return berria;
 	}
 	
-	public Vector<Mezua> getMezuak() {
-		Vector<Mezua> emaitza = new Vector<Mezua>();
+	public ArrayList<Mezua> getMezuak() {
+		ArrayList<Mezua> emaitza = new ArrayList<Mezua>();
 		emaitza.addAll(jasotakoBezeroMezuak);
 		for(ArretaElkarrizketa ae : arretaElkarrizketak) {
 			for(ArretaMezua am : ae.getLangileakBidalitakoak()) {

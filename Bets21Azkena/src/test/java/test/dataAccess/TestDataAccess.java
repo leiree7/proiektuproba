@@ -1,5 +1,6 @@
 package test.dataAccess;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -96,12 +97,12 @@ public class TestDataAccess {
 			System.out.println(">> DataAccessTest: existQuestion");
 			Event e = db.find(Event.class, ev.getEventNumber());
 			if (e!=null) {
-				return e.DoesQuestionExists(q.getQuestion());
+				return e.doesQuestionExists(q.getQuestion());
 			} else 
 			return false;
 			
 		}
-		public Vector<Mezua> getMezuak(Bezeroa bezeroa){
+		public ArrayList<Mezua> getMezuak(Bezeroa bezeroa){
 			Bezeroa erabiltzailea = db.find(Bezeroa.class, bezeroa.getErabiltzaileIzena());
 			return erabiltzailea.getMezuak();
 		}
