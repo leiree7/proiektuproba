@@ -391,7 +391,7 @@ public class ApustuaEginGUI extends JFrame {
 				jLabelErrorDate.setText("");
 				jLabelSucces.setText("");
 				pronosticAdded.setText("");
-//				this.jCalendar.addPropertyChangeListener(new PropertyChangeListener() {
+
 //					public void propertyChange(PropertyChangeEvent propertychangeevent) {
 				if (propertychangeevent.getPropertyName().equals("locale")) {
 					jCalendar.setLocale((Locale) propertychangeevent.getNewValue());
