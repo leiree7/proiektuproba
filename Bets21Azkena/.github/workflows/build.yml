@@ -26,8 +26,8 @@ jobs:
       - name: Cache Maven packages
         uses: actions/cache@v1
         with:
-          path: mvn -f Bets21Azkena/pom.xml <goals>
-          key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
+          path: ~/.m2
+          key: ${{ runner.os }}-m2-${{ hashFiles('**/Bets21Azkena/pom.xml') }}
           restore-keys: ${{ runner.os }}-m2
       - name: Build and analyze
         env:
