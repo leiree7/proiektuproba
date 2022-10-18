@@ -284,7 +284,8 @@ public class BLFacadeImplementation  implements BLFacade {
     @WebMethod 
     public void errepikatu(Bezeroa nork, Bezeroa nori, double apustatukoDena, double hilabetekoMax, double komisioa) {
     	dbManager.open(false);
-    	dbManager.errepikatu(nork, nori, apustatukoDena, hilabetekoMax, komisioa);
+    	Errepikapena a = new Errepikapena(nork,nori,apustatukoDena,hilabetekoMax,komisioa);
+    	dbManager.errepikatu(a);
     	dbManager.close();
     }
 

@@ -61,7 +61,7 @@ public class DataAccess {
 		System.out.println("Creating DataAccess instance => isDatabaseLocal: " + c.isDatabaseLocal()
 		+ " getDatabBaseOpenMode: " + c.getDataBaseOpenMode());
 		open(initializeMode);
-
+ 
 	}
 
 	public DataAccess() {
@@ -88,7 +88,9 @@ public class DataAccess {
 				month = 0;
 				year += 1;
 			}
-
+			
+			
+			
 			Event ev1 = new Event(1,"Atl�tico-Athletic", UtilDate.newDate(year, month, 17));
 			Event ev2 = new Event(2, "Eibar-Barcelona", UtilDate.newDate(year, month, 17));
 			Event ev3 = new Event(3, "Getafe-Celta", UtilDate.newDate(year, month, 17));
@@ -144,6 +146,7 @@ public class DataAccess {
 				q6 = ev17.addQuestion("Golak sartuko dira lehenengo zatian?", 2);
 			}
 
+		
 
 			Admin a1 = new Admin("Ramon", "Rodriguez", "Soto", "Admin", AAAAAAAA, "666666666","ramonAdmindb.@gmail.com", UtilDate.newDate(2001,2,12));
 			
@@ -720,11 +723,16 @@ public class DataAccess {
 		db.getTransaction().commit();
 	}
 
-	public void errepikatu(Bezeroa nork, Bezeroa nori, double apustatukoDena, double hilabetekoMax, double komisioa){
-		Bezeroa errepikatzailea = db.find(Bezeroa.class, nork.getErabiltzaileIzena());
-		Bezeroa errepikatua = db.find(Bezeroa.class, nori.getErabiltzaileIzena());
+	public void errepikatu(Errepikapena errepikapena){
+		Bezeroa errepikatzailea = db.find(Bezeroa.class, errepikapena.getNork().getErabiltzaileIzena());
+		Bezeroa errepikatua = db.find(Bezeroa.class, errepikapena.getNori().getErabiltzaileIzena());
+		double apustatukoDena = errepikapena.getApustatukoDena();
+		double hilabetekoMax = errepikapena.getHilabetekoMax();
+		double komisioa = errepikapena.getKomisioa();
+		
+		
 		db.getTransaction().begin();
-		Errepikapena errepikapenBerria = errepikatua.addErrepikatzailea(nork, apustatukoDena, hilabetekoMax, komisioa);
+		Errepikapena errepikapenBerria = errepikatua.addErrepikatzailea(errepikapena.getNork(), apustatukoDena, hilabetekoMax, komisioa);
 		errepikatzailea.addErrepikatua(errepikapenBerria);
 		db.persist(errepikapenBerria);
 		db.getTransaction().commit();
@@ -754,7 +762,7 @@ public class DataAccess {
 			db.getTransaction().commit();
 		}else {
 			removeArretaMezua(mezua);
-
+ 
 		}
 		return true;
 	}
