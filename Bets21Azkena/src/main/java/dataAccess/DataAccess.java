@@ -742,23 +742,28 @@ public class DataAccess {
 			db.remove(m);
 			db.getTransaction().commit();
 		}else {
-			ArretaMezua m = db.find(ArretaMezua.class, mezua.getIdentifikadorea());
-			ArretaElkarrizketa elkarrizketa = m.getElkarrizketa();
-			db.getTransaction().begin();
-			if(elkarrizketa.isAmaituta()) {
-				elkarrizketa.removeMezua(m);
-				db.remove(m);
-				if(elkarrizketa.mezurikEz()) {
-					db.remove(elkarrizketa);
-				}
-			}else {
-				m.setIkusgaiBezeroarentzat(false);
-				db.getTransaction().commit();
-				return false;
-			}
-			db.getTransaction().commit();
+			removeArretaMezua(mezua);
 
 		}
+		return true;
+	}
+
+	private boolean removeArretaMezua(Mezua mezua) {
+		ArretaMezua m = db.find(ArretaMezua.class, mezua.getIdentifikadorea());
+		ArretaElkarrizketa elkarrizketa = m.getElkarrizketa();
+		db.getTransaction().begin();
+		if(elkarrizketa.isAmaituta()) {
+			elkarrizketa.removeMezua(m);
+			db.remove(m);
+			if(elkarrizketa.mezurikEz()) {
+				db.remove(elkarrizketa);
+			}
+		}else {
+			m.setIkusgaiBezeroarentzat(false);
+			db.getTransaction().commit();
+			return false;
+		}
+		db.getTransaction().commit();
 		return true;
 	}
 
