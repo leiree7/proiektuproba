@@ -126,17 +126,23 @@ public class Bezeroa extends Pertsona implements Serializable{
 		for(Mugimendua mugimendua : mugimenduak) {
 			if(mugimendua.getMota().equals("irabazi")) {
 				irabazia+=mugimendua.getAldaketa();
-			}else if(mugimendua.getMota().equals("bueltatu")) {
-				jokatua-=mugimendua.getAldaketa();
-			}else if(mugimendua.getMota().equals("jokatu")){
-				jokatua-=mugimendua.getAldaketa();
-			}
+			} else
+				jokatua = getMugimenduetanJokatua(jokatua, mugimendua);
 		}
 		etekina=irabazia-jokatua;
 		emaitza.add(jokatua);
 		emaitza.add(irabazia);
 		emaitza.add(etekina);
 		return emaitza;
+	}
+
+	private double getMugimenduetanJokatua(double jokatua, Mugimendua mugimendua) {
+		if(mugimendua.getMota().equals("bueltatu")) {
+			jokatua-=mugimendua.getAldaketa();
+		}else if(mugimendua.getMota().equals("jokatu")){
+			jokatua-=mugimendua.getAldaketa();
+		}
+		return jokatua;
 	}
 
 	public Integer getJokatuak() {

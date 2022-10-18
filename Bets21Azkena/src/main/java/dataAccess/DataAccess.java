@@ -659,18 +659,23 @@ public class DataAccess {
 			bezeroa.removeApustua(bet);
 			db.remove(bet);
 		}else if(bet.getAsmatutakoKop().equals(bet.getPronostikoKop())) {
-			double komisioa = 0;
-			if (bet.getErrepikatua()!=null) {
-				Bezeroa bez = bet.getErrepikatua();
-				bezeroa = bet.getBezeroa();
-				Errepikapena errepikapen=bezeroa.getErrepikapena(bez);
-				komisioa=(bet.getKopurua()*bet.getKuotaTotala()-bet.getKopurua())*errepikapen.getKomisioa();
-				bez.addMugimendua("Apustu errepikatuaren komisioa ("+bezeroa+")", komisioa,IRABAZI);
-			}
-			bezeroa=bet.getBezeroa();
-			double irabazia=bet.getKopurua()*bet.getKuotaTotala()-komisioa;
-			bezeroa.addMugimendua("Apustua irabazi ("+bet.getIdentifikadorea()+")", irabazia, IRABAZI);
+			ezabatuDenaAsmatua(bet);
 		}
+	}
+
+	private void ezabatuDenaAsmatua(Apustua bet) {
+		Bezeroa bezeroa;
+		double komisioa = 0;
+		if (bet.getErrepikatua()!=null) {
+			Bezeroa bez = bet.getErrepikatua();
+			bezeroa = bet.getBezeroa();
+			Errepikapena errepikapen=bezeroa.getErrepikapena(bez);
+			komisioa=(bet.getKopurua()*bet.getKuotaTotala()-bet.getKopurua())*errepikapen.getKomisioa();
+			bez.addMugimendua("Apustu errepikatuaren komisioa ("+bezeroa+")", komisioa,IRABAZI);
+		}
+		bezeroa=bet.getBezeroa();
+		double irabazia=bet.getKopurua()*bet.getKuotaTotala()-komisioa;
+		bezeroa.addMugimendua("Apustua irabazi ("+bet.getIdentifikadorea()+")", irabazia, IRABAZI);
 	}
 
 	public Bezeroa getBezeroa(String erabiltzaileIzena) {
