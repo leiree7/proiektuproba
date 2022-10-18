@@ -718,11 +718,16 @@ public class DataAccess {
 		db.getTransaction().commit();
 	}
 
-	public void errepikatu(Bezeroa nork, Bezeroa nori, double apustatukoDena, double hilabetekoMax, double komisioa){
-		Bezeroa errepikatzailea = db.find(Bezeroa.class, nork.getErabiltzaileIzena());
-		Bezeroa errepikatua = db.find(Bezeroa.class, nori.getErabiltzaileIzena());
+	public void errepikatu(Errepikapena errepikapena){
+		Bezeroa errepikatzailea = db.find(Bezeroa.class, errepikapena.getNork().getErabiltzaileIzena());
+		Bezeroa errepikatua = db.find(Bezeroa.class, errepikapena.getNori().getErabiltzaileIzena());
+		double apustatukoDena = errepikapena.getApustatukoDena();
+		double hilabetekoMax = errepikapena.getHilabetekoMax();
+		double komisioa = errepikapena.getKomisioa();
+		
+		
 		db.getTransaction().begin();
-		Errepikapena errepikapenBerria = errepikatua.addErrepikatzailea(nork, apustatukoDena, hilabetekoMax, komisioa);
+		Errepikapena errepikapenBerria = errepikatua.addErrepikatzailea(errepikapena.getNork(), apustatukoDena, hilabetekoMax, komisioa);
 		errepikatzailea.addErrepikatua(errepikapenBerria);
 		db.persist(errepikapenBerria);
 		db.getTransaction().commit();
