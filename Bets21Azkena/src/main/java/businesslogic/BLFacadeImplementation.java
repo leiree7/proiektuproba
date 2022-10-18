@@ -176,7 +176,7 @@ public class BLFacadeImplementation  implements BLFacade {
  		dbManager.close();
  		return p;
     };
-    
+   
     @WebMethod
     public void emaitzaIpini(Question question, Pronostikoa pronostikoa){
     	dbManager.open(false);
