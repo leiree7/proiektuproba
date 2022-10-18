@@ -31,7 +31,6 @@ public class TestDataAccess {
 
 	ConfigXML  c=ConfigXML.getInstance();
 
-
 	public TestDataAccess()  {
 		
 		System.out.println("Creating TestDataAccess instance");
