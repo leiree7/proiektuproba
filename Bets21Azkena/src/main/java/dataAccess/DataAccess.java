@@ -423,8 +423,6 @@ public class DataAccess {
 			return pertsona.get(0);
 		}
 	}
-
-
 	
 	public Pertsona register(Pertsona per, String mota) throws UserAlreadyExist{
 		TypedQuery<Pertsona> query = db.createQuery("SELECT p FROM Pertsona p WHERE p.erabiltzaileIzena=?1", Pertsona.class);
@@ -433,19 +431,23 @@ public class DataAccess {
 		if(!pertsona.isEmpty()) {
 			throw new UserAlreadyExist();
 		}else {
-			Pertsona berria = null;
-			if(mota.equals("admin")) {
-				berria = new Admin(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
-			}else if (mota.equals("langilea")) {
-				berria = new Langilea(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
-			}else if (mota.equals("bezeroa")) {
-				berria = new Bezeroa(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
-			}
-			db.getTransaction().begin();
-			db.persist(berria);
-			db.getTransaction().commit();
-			return berria;
+			return pertsonaSortu(per, mota);
 		}
+	}
+
+	private Pertsona pertsonaSortu(Pertsona per, String mota) {
+		Pertsona berria = null;
+		if(mota.equals("admin")) {
+			berria = new Admin(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
+		}else if (mota.equals("langilea")) {
+			berria = new Langilea(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
+		}else if (mota.equals("bezeroa")) {
+			berria = new Bezeroa(per.izena, per.abizena1, per.abizena2, per.erabiltzaileIzena, per.pasahitza, per.telefonoZbkia, per.email, per.jaiotzeData);
+		}
+		db.getTransaction().begin();
+		db.persist(berria);
+		db.getTransaction().commit();
+		return berria;
 	}
 
 	public void createEvent(String description, Date eventDate) throws EventAlreadyExist{
