@@ -10,7 +10,6 @@ import test.dataAccess.TestDataAccess;
 public class TestFacadeImplementation {
 	TestDataAccess dbManagerTest;
  	
-    
 	   public TestFacadeImplementation()  {
 			
 			System.out.println("Creating TestFacadeImplementation instance");
