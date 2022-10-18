@@ -107,4 +107,9 @@ public abstract class Pertsona implements Serializable{
 	public void setErabiltzaileIzena(String erabiltzaileIzena) {
 		this.erabiltzaileIzena = erabiltzaileIzena;
 	}
+	
+	@Override
+	public boolean equals(Object p) {
+		return this.erabiltzaileIzena.equals(((Pertsona) p).getErabiltzaileIzena());
+	}
 }

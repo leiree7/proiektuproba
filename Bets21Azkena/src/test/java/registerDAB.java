@@ -3,6 +3,7 @@ import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
 
 import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 import configuration.UtilDate;
@@ -14,7 +15,7 @@ import exceptions.UserAlreadyExist;
 
 public class registerDAB {
 
-     private DataAccess db;
+     private static DataAccess db;
 
 
      Langilea langile1;
@@ -24,12 +25,12 @@ public class registerDAB {
 
 
 
-    @Before
-    public void setDataAccess() {
-        db = new DataAccess(true);
-
-
-    }
+     @BeforeClass
+     public static void setDataAccess() {
+    	 db = new DataAccess(true);
+    	 db.initializeDB();
+    	 db.open(false);
+     }
 
     @Test
     public void test1() {
@@ -37,6 +38,7 @@ public class registerDAB {
         bezero1 = new Bezeroa("Unax", "Labaka", "Zubimendi", "Ulabak", "Unax1234", "123456789", "unaxlabak@gmail.com", UtilDate.newDate(2002, 9, 11));
         bezero2 = (Bezeroa)db.register(bezero1, "bezeroa" );
         assertEquals(bezero1,bezero2);
+        db.removePertsona("Ulabak");
         }catch(Exception e) {
             e.printStackTrace();
         }
