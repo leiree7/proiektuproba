@@ -11,6 +11,7 @@ import org.junit.Test;
 import configuration.UtilDate;
 import dataAccess.DataAccess;
 import domain.Bezeroa;
+import domain.Errepikapena;
 import domain.Event;
 import domain.Pronostikoa;
 
@@ -38,7 +39,8 @@ public class ApustuaEginDABTest {
 		da.diruaSartu(100, bezero2);
 		bezero21 = da.getBezeroa("Na1ara");
 		da.diruaSartu(100, bezero21);
-		da.errepikatu(bezero21, bezero2, 1, 40, 0);
+		Errepikapena e= new Errepikapena(bezero21,bezero2, 1,40,0);
+		da.errepikatu(e);
 		
 		Calendar today = Calendar.getInstance();
 		int month = today.get(Calendar.MONTH);

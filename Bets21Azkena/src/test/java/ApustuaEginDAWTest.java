@@ -44,16 +44,19 @@ public class ApustuaEginDAWTest {
 		da.diruaSartu(104, bezero2);
 		bezero21 = da.getBezeroa("Na1ara");
 		da.diruaSartu(100, bezero21);
-		da.errepikatu(bezero21, bezero2, 1, 40, 0);
+		Errepikapena e= new Errepikapena(bezero21,bezero2, 1,40,0);
+		da.errepikatu(e);
 		
 		bezero3 = da.getBezeroa("JoseRamon");
 		bezero31 = da.getBezeroa("Ontsalo");
 		da.diruaSartu(100, bezero31);
-		da.errepikatu(bezero31, bezero3, 1, 0, 0);
+		Errepikapena f= new Errepikapena(bezero21,bezero2, 1,0,0);
+		da.errepikatu(f);
 		
 		bezero4 = da.getBezeroa("Josueeee");
 		bezero41 = da.getBezeroa("PelloJoxepe");
-		da.errepikatu(bezero41, bezero4, 1, 3, 0);
+		Errepikapena g= new Errepikapena(bezero21,bezero2, 1,3,0);
+		da.errepikatu(g);
 		
 		Calendar today = Calendar.getInstance();
 		int month = today.get(Calendar.MONTH);
