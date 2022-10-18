@@ -501,27 +501,31 @@ public class DataAccess {
 		db.getTransaction().begin();
 		q.setResult(pronostikoa.getDeskripzioa());
 		ArrayList<Apustua> apustuak = p.getApustuak();
-		Bezeroa bezeroa;
-		double irabazia;
 		boolean irabazi;
 		double komisioa;
 		for(Apustua a : apustuak) {
 			irabazi=a.eguneratuAsmatutakoKop();
 			komisioa=0;
 			if(irabazi) {
-				if (a.getErrepikatua()!=null) {
-					Bezeroa bez = a.getErrepikatua();
-					bezeroa = a.getBezeroa();
-					Errepikapena errepikapen=bezeroa.getErrepikapena(bez);
-					komisioa=(a.getKopurua()*a.getKuotaTotala()-a.getKopurua())*errepikapen.getKomisioa();
-					bez.addMugimendua("Apustu errepikatuaren komisioa ("+bezeroa+")", komisioa,IRABAZI);
-				}
-				bezeroa=a.getBezeroa();
-				irabazia=a.getKopurua()*a.getKuotaTotala()-komisioa;
-				bezeroa.addMugimendua("Apustua irabazi ("+a.getIdentifikadorea()+")", irabazia, IRABAZI);
+				apustuaIrabazi(komisioa, a);
 			}
 		}	
 		db.getTransaction().commit();
+	}
+
+	private void apustuaIrabazi(double komisioa, Apustua a) {
+		Bezeroa bezeroa;
+		double irabazia;
+		if (a.getErrepikatua()!=null) {
+			Bezeroa bez = a.getErrepikatua();
+			bezeroa = a.getBezeroa();
+			Errepikapena errepikapen=bezeroa.getErrepikapena(bez);
+			komisioa=(a.getKopurua()*a.getKuotaTotala()-a.getKopurua())*errepikapen.getKomisioa();
+			bez.addMugimendua("Apustu errepikatuaren komisioa ("+bezeroa+")", komisioa,IRABAZI);
+		}
+		bezeroa=a.getBezeroa();
+		irabazia=a.getKopurua()*a.getKuotaTotala()-komisioa;
+		bezeroa.addMugimendua("Apustua irabazi ("+a.getIdentifikadorea()+")", irabazia, IRABAZI);
 	}
 
 	public Bezeroa apustuaEgin(List<Pronostikoa> pronostikoak, double a, Bezeroa bezero) {
