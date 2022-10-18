@@ -89,7 +89,7 @@ public class DataAccess {
 				year += 1;
 			}
 			
-			//asdasdasd
+			
 			
 			Event ev1 = new Event(1,"Atl�tico-Athletic", UtilDate.newDate(year, month, 17));
 			Event ev2 = new Event(2, "Eibar-Barcelona", UtilDate.newDate(year, month, 17));
@@ -146,6 +146,7 @@ public class DataAccess {
 				q6 = ev17.addQuestion("Golak sartuko dira lehenengo zatian?", 2);
 			}
 
+		
 
 			Admin a1 = new Admin("Ramon", "Rodriguez", "Soto", "Admin", AAAAAAAA, "666666666","ramonAdmindb.@gmail.com", UtilDate.newDate(2001,2,12));
 			
