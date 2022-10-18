@@ -111,5 +111,5 @@ public abstract class Pertsona implements Serializable{
 	@Override
 	public boolean equals(Object p) {
 		return this.erabiltzaileIzena.equals(((Pertsona) p).getErabiltzaileIzena());
-	}
+	}//
 }
