@@ -14,7 +14,7 @@ import domain.Bezeroa;
 import domain.Errepikapena;
 import domain.Event;
 import domain.Pronostikoa;
-
+import exceptions.PronosticAlreadyExist;
 
 import org.junit.BeforeClass;
 
@@ -52,6 +52,13 @@ public class ApustuaEginDABTest {
 		}
 		event1 = da.getEvents(UtilDate.newDate(year, month, 17)).get(0);
 		event1.getQuestions().get(0).setBetMinimum(5);
+		try {
+			da.createPronostic(event1.getQuestions().get(0), "no se que poner", 2);
+		} catch (PronosticAlreadyExist e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		System.out.println(event1.getQuestions().size());
 		da.close();
 	}
 	
@@ -61,6 +68,7 @@ public class ApustuaEginDABTest {
 		da.open(false);
 		
 		bezero1 = da.getBezeroa(bezero1.getErabiltzaileIzena());
+		System.out.println(event1.getQuestions().get(0).getPronostics().size());
 		pronostikoak.add(event1.getQuestions().get(0).getPronostics().get(0));
 		double dirua1 = bezero1.getDirua();
 		assertEquals(da.apustuaEgin(pronostikoak, 10, bezero1), bezero1);
