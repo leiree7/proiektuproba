@@ -757,7 +757,7 @@ public class DataAccess {
 			db.getTransaction().commit();
 		}else {
 			removeArretaMezua(mezua);
-
+ 
 		}
 		return true;
 	}
