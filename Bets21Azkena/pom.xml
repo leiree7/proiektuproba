@@ -32,8 +32,8 @@ http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <maven.compiler.source>1.8</maven.compiler.source>
 	<sonar.organization>leiree7</sonar.organization>
 	<sonar.host.url>https://sonarcloud.io</sonar.host.url>		
-	<sonar.projectKey>leiree7_proiektuproba</sonar.projectKey>		
-	<sonar.login>2f866bef1d9aa5cc08467e39377a67dff732ad1f</sonar.login>
+	<sonar.projectKey>proiektuproba</sonar.projectKey>		
+	<sonar.login>579c4fcf7ac09dd42cd7f3ce4da56b33ec47d49f</sonar.login>
 </properties>
 
 <!-- https://mvnrepository.com/artifact/junit/junit	-->
