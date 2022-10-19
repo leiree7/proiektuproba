@@ -80,7 +80,7 @@ public class removeMezuaINTTest {
 		e = testDA.getArretaElkarrizketa(e.getIdentifikadorea());
 		ArretaMezua m = e.getMezuak().firstElement();
 		boolean obtained = sut.removeMezua(m);
-		boolean expected = false;
+		boolean expected = true;
 		assertEquals(obtained, expected);
 	}
 

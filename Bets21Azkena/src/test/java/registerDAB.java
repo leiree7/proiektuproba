@@ -24,7 +24,6 @@ public class registerDAB {
      Bezeroa bezero2;
 
 
-
      @BeforeClass
      public static void setDataAccess() {
     	 db = new DataAccess(true);

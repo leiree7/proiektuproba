@@ -114,7 +114,7 @@ public class removeMezuaDAWTest {
 	public void test3() {
 		String gaia = "gaia";
 		String mezua = "mezua";
-		boolean expected = false;
+		boolean expected = true;
 		try {
 			testDA.open();
 			testDA.register("b2",  "b2", "b2", "b2", "p2", "666666662", "b2@email.com", new Date(), "bezeroa");
